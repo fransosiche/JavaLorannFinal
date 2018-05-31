@@ -39,7 +39,7 @@ public class LorannController implements ILorannController, IOrderPerformer {
     }
     
     @Override
-    public final void play() throws InterruptedException {
+    public final void play() throws InterruptedException, IOException {
         while (this.getModel().getLorann().isAlive()) {
             Thread.sleep(speed);
             switch (this.getStackOrder()) {

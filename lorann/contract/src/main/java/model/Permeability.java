@@ -8,10 +8,10 @@ package model;
  */
 public enum Permeability {
 
-    /** The blocking. */
-    BLOCKING,
-    /** The penetrable. */
-    PENETRABLE,
-    
-    MONSTER;
+	/** The blocking. */
+	BLOCKING,
+	/** The penetrable. */
+	PENETRABLE, MONSTER,
+
+	OPENGATE, END;
 }

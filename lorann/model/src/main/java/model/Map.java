@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 import element.Element;
-import mobile.Monster1;
-import mobile.Monster2;
+import mobile.Golem;
+import mobile.Monster;
 import mobile.Monster3;
 import mobile.Monster4;
 import motionless.MotionlessElementFactory;
@@ -39,9 +39,9 @@ public class Map extends Observable implements IMap {
 	 *             Signals that an I/O exception has occurred.
 	 * @throws SQLException
 	 */
-	Map(final int level) throws IOException, SQLException {
+	Map(final int id) throws IOException, SQLException {
 		super();
-		this.loadFile(level);
+		this.loadFile(id);
 	}
 
 	/**
@@ -53,8 +53,8 @@ public class Map extends Observable implements IMap {
 	 *             Signals that an I/O exception has occurred.
 	 * @throws SQLException
 	 */
-	private void loadFile(final int level) throws IOException, SQLException {
-		final BufferedReader buffer = new BufferedReader(new InputStreamReader(dao.getLevelById(level)));
+	private void loadFile(final int id) throws IOException, SQLException {
+		final BufferedReader buffer = new BufferedReader(new InputStreamReader(dao.getLevelById(id)));
 		String line;
 		int y = 0;
 		line = buffer.readLine();
@@ -68,24 +68,8 @@ public class Map extends Observable implements IMap {
 				this.setOnTheMapXY(MotionlessElementFactory.getFromFileSymbol(line.toCharArray()[x]), x, y);
 				if(this.getOnTheMapXY(x, y) == null){
 					for(int i=1; i<5; i++){
-						switch(line.toCharArray()[x]){
-						case 1:
-							this.setOnTheMapXY(MotionlessElementFactory.createGround(), x, y);
-							this.monster.add(new Monster1(x, y, new Sprite('1', "monster_1.png"), this, Permeability.MONSTER));
-							break;
-						case 2:
-							this.setOnTheMapXY(MotionlessElementFactory.createGround(), x, y);
-							this.monster.add(new Monster2(x, y, new Sprite('2', "monster_2.png"), this, Permeability.MONSTER));
-							break;
-						case 3:
-							this.setOnTheMapXY(MotionlessElementFactory.createGround(), x, y);
-							this.monster.add(new Monster3(x, y, new Sprite('3', "monster_3.png"), this, Permeability.MONSTER));
-							break;
-						case 4:
-							this.setOnTheMapXY(MotionlessElementFactory.createGround(), x, y);
-							this.monster.add(new Monster4(x, y, new Sprite('4', "monster_4.png"), this, Permeability.MONSTER));
-							break;
-						}
+						
+						
 					}
 				}
 			}

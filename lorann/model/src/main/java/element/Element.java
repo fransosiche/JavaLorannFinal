@@ -21,6 +21,8 @@ public class Element implements IElement{
 
     /** The permeability. */
     private Permeability permeability;
+    
+    protected boolean[] keyStats = new boolean[4];
 
     /**
      * Instantiates a new element.

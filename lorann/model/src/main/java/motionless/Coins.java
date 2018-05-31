@@ -10,7 +10,7 @@ import model.Sprite;
  * @version 1.0
  */
 
-public class Purse extends MotionlessElement {
+public class Coins extends MotionlessElement {
 
 	/** The Constant SPRITE. */
 	private static final Sprite SPRITE = new Sprite('C', "purse.png");
@@ -18,7 +18,7 @@ public class Purse extends MotionlessElement {
 	/**
 	 * Instantiates a new purse.
 	 */
-	public Purse() {
+	public Coins() {
 		super(SPRITE, Permeability.PENETRABLE);
 	}
 

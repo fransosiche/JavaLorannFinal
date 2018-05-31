@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author Kévin MORICEAU
+ * @author François Biron
  *
  */
 package motionless;

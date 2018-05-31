@@ -29,7 +29,7 @@ public class LorannView implements Runnable, KeyListener, ILorannView {
 
 	/** The Constant length. */
 	private int squareSize = 80;
-	
+
 	private Rectangle closeView;
 
 	/** The map. */
@@ -37,7 +37,7 @@ public class LorannView implements Runnable, KeyListener, ILorannView {
 
 	/** Lorann. */
 	private IMobile Lorann;
-	
+
 	private ArrayList<Element> monsters;
 
 	/** The order performer. */
@@ -56,7 +56,7 @@ public class LorannView implements Runnable, KeyListener, ILorannView {
 	public LorannView(final IMap map, final IMobile Lorann) throws IOException {
 		this.setMap(map);
 		this.setLorann(Lorann);
-		//this.setMonsters(this.map.);
+		// this.setMonsters(this.map.);
 		this.getLorann().getSprite().loadImage();
 		this.setCloseView(new Rectangle(0, 0, this.getMap().getWidth(), this.getMap().getHeight()));
 		SwingUtilities.invokeLater(this);
@@ -73,11 +73,11 @@ public class LorannView implements Runnable, KeyListener, ILorannView {
 		boardFrame.setSize(this.map.getWidth() * squareSize, this.map.getHeight() * squareSize);
 		boardFrame.setDisplayFrame(this.closeView);
 		boardFrame.setHeightLooped(false);
-        boardFrame.addKeyListener(this);
+		boardFrame.addKeyListener(this);
 		boardFrame.setFocusable(true);
 		boardFrame.setFocusTraversalKeysEnabled(false);
 		boardFrame.setLocationRelativeTo(null);
-		
+
 		boardFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 
 		for (int x = 0; x < this.getMap().getWidth(); x++) {
@@ -85,7 +85,7 @@ public class LorannView implements Runnable, KeyListener, ILorannView {
 				boardFrame.addSquare(this.map.getOnTheMapXY(x, y), x, y);
 			}
 		}
-		
+
 		boardFrame.addPawn(this.getLorann());
 
 		this.getMap().getObservable().addObserver(boardFrame.getObserver());
@@ -152,10 +152,10 @@ public class LorannView implements Runnable, KeyListener, ILorannView {
 		this.getMap();
 		for (int x = 0; x < (this.getMap().getWidth() - 1); x++) {
 			for (int y = 0; y < (this.getMap().getHeight() - 1); y++) {
-				
+
 				Element e = this.getMap().getOnTheMapXY(x, y);
 				e.getSprite().loadImage();
-				
+
 			}
 		}
 	}
@@ -228,7 +228,7 @@ public class LorannView implements Runnable, KeyListener, ILorannView {
 	public void setSquareSize(int squareSize) {
 		this.squareSize = squareSize;
 	}
-	
+
 	public Rectangle getCloseView() {
 		return closeView;
 	}
@@ -236,7 +236,6 @@ public class LorannView implements Runnable, KeyListener, ILorannView {
 	public void setCloseView(Rectangle closeView) {
 		this.closeView = closeView;
 	}
-	
 
 	public ArrayList<Element> getMonsters() {
 		return monsters;
@@ -245,5 +244,7 @@ public class LorannView implements Runnable, KeyListener, ILorannView {
 	public void setMonsters(ArrayList<Element> monsters) {
 		this.monsters = monsters;
 	}
+
+	
 
 }

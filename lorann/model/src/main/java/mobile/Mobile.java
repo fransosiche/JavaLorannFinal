@@ -1,6 +1,7 @@
 package mobile;
 
 import java.awt.Point;
+import java.io.IOException;
 
 import element.Element;
 import model.IMap;
@@ -61,42 +62,69 @@ public abstract class Mobile extends Element implements IMobile {
 		this.setY(y);
 	}
 
-	@Override
-	public void moveUp() {	
-		if(this.getY() != 0) {
-			if(this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1).getPermeability() == Permeability.PENETRABLE) {
+	public void moveUp() throws IOException {
+		if (this.getY() != 0) {
+			if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1)
+					.getPermeability() == Permeability.PENETRABLE) {
 				this.setY(this.getY() - 1);
 				this.setHasMoved();
 			}
+			if (this.getY() != 0) {
+				try {
+					if (this.getMap().getOnTheMapXY(this.getX(), this.getY())
+							.getPermeability() == Permeability.OPENGATE) {
+						this.OpeningDoor(getX(), getY());
+					}
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
 		}
 	}
 
 	@Override
-	public void moveLeft() {
-		if(this.getX() != 0) {
-			if(this.getMap().getOnTheMapXY(this.getX() - 1, this.getY()).getPermeability() == Permeability.PENETRABLE) {	
+	public void moveLeft() throws IOException {
+		if (this.getX() != 0) {
+			if (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY())
+					.getPermeability() == Permeability.PENETRABLE) {
 				this.setX(this.getX() - 1);
 				this.setHasMoved();
 			}
-		}
-	}
+			if (this.getMap().getOnTheMapXY(this.getX(), this.getY()).getPermeability() == Permeability.OPENGATE) {
 
-	@Override
-	public void moveDown() {
-		if(this.getY() != this.getMap().getHeight()) {
-			if(this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1).getPermeability() == Permeability.PENETRABLE) {
-				this.setY(this.getY() + 1);
-				this.setHasMoved();
+				this.OpeningDoor(this.getX(), this.getY());
 			}
 		}
 	}
 
 	@Override
-	public void moveRight() {
-		if(this.getX() != this.getMap().getWidth()) {
-			if(this.getMap().getOnTheMapXY(this.getX()+ 1, this.getY()).getPermeability() == Permeability.PENETRABLE) {
+	public void moveDown() throws IOException {
+		if (this.getY() != this.getMap().getHeight()) {
+			if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1)
+					.getPermeability() == Permeability.PENETRABLE) {
+				this.setY(this.getY() + 1);
+				this.setHasMoved();
+			}
+			if (this.getMap().getOnTheMapXY(this.getX(), this.getY()).getPermeability() == Permeability.OPENGATE) {
+				this.OpeningDoor(this.getX(), this.getY());
+			}
+		}
+	}
+
+	public void moveRight() throws IOException {
+		if (this.getX() != this.getMap().getWidth()) {
+			if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY())
+					.getPermeability() == Permeability.PENETRABLE) {
 				this.setX(this.getX() + 1);
 				this.setHasMoved();
+			}
+			if (this.getMap().getOnTheMapXY(this.getX(), this.getY()).getPermeability() == Permeability.OPENGATE) {
+				this.OpeningDoor(this.getX(), this.getY());
+			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY())
+					.getPermeability() != Permeability.OPENGATE) {
+
 			}
 		}
 	}
@@ -121,7 +149,7 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	public final int getY() {
-		
+
 		return this.getPosition().y;
 	}
 
@@ -153,30 +181,58 @@ public abstract class Mobile extends Element implements IMobile {
 	public Boolean isCrashed() {
 		return false;
 		// TODO Auto-generated method stub
-		//return this.getMap().getOnTheMapXY(this.getX(), this.getY()).getPermeability() == Permeability.BLOCKING;
+		// return this.getMap().getOnTheMapXY(this.getX(),
+		// this.getY()).getPermeability() == Permeability.BLOCKING;
 	}
 
-    public Point getPosition() {
-        return this.position;
-    }
+	public Point getPosition() {
+		return this.position;
+	}
 
-    /**
-     * Sets the position.
-     *
-     * @param position
-     *            the position to set
-     */
-    public void setPosition(final Point position) {
-        this.position = position;
-    }
+	/**
+	 * Sets the position.
+	 *
+	 * @param position
+	 *            the position to set
+	 */
+	public void setPosition(final Point position) {
+		this.position = position;
+	}
 
-    /**
-     * Gets the board.
-     *
-     * @return the board
-     */
-    protected IBoard getBoard() {
-        return this.board;
-    }
-	
+	protected void OpeningDoor(int x, int y) throws IOException {
+		this.getMap().getOnTheMapXY(x, y).setSprite(new Sprite(' ', "ground.png"));
+		this.getMap().getOnTheMapXY(x, y).getSprite().loadImage();
+		for (int i = 0; i < this.getMap().getWidth(); i++) {
+			for (int j = 0; j < this.getMap().getHeight(); j++) {
+				if (this.getMap().getOnTheMapXY(i, j).getSprite().getConsoleImage() == 'g') {
+					this.getMap().getOnTheMapXY(i, j).setSprite(new Sprite('G', "gate_open.png"));
+					this.getMap().getOnTheMapXY(i, j).getSprite().loadImage();
+					this.getMap().getOnTheMapXY(i, j).setPermeability(Permeability.END);
+
+				} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY())
+						.getPermeability() == Permeability.OPENGATE) {
+					try {
+						this.OpeningDoor(this.getX() + 1, this.getY());
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					this.setX(this.getX() + 1);
+					this.setHasMoved();
+
+				}
+			}
+
+		}
+	}
+
+	/**
+	 * Gets the board.
+	 *
+	 * @return the board
+	 */
+	protected IBoard getBoard() {
+		return this.board;
+	}
+
 }

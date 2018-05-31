@@ -10,7 +10,7 @@ import model.Sprite;
  * @version 1.0
  */
 
-public class Ground extends MotionlessElement {
+public class Dirt extends MotionlessElement {
 
 	/** The Constant SPRITE. */
 	private static final Sprite SPRITE = new Sprite(' ', "ground.png");
@@ -18,7 +18,7 @@ public class Ground extends MotionlessElement {
 	/**
 	 * Instantiates a new ground.
 	 */
-	public Ground() {
+	public Dirt() {
 		super(SPRITE, Permeability.PENETRABLE);
 	}
 

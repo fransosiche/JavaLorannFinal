@@ -45,31 +45,31 @@ public class Lorann extends Mobile {
 		spriteTurnUp.loadImage();
 	}
 
-	@Override
-	public void moveUp() {
+	
+	public void moveUp() throws IOException {
 		super.moveUp();
 		this.setSprite(spriteTurnUp);
 	}
 
-	@Override
-	public void moveLeft() {
+	
+	public void moveLeft() throws IOException {
 		super.moveLeft();
 		this.setSprite(spriteTurnLeft);
 	}
 
-	@Override
-	public void moveDown() {
+	
+	public void moveDown() throws IOException {
 		super.moveDown();
 		this.setSprite(spriteTurnDown);
 	}
 
-	@Override
-	public void moveRight() {
+	
+	public void moveRight() throws IOException {
 		super.moveRight();
 		this.setSprite(spriteTurnRight);
 	}
 
-	@Override
+	
 	public void doNothing() {
 		switch (this.icon) {
 		case 0:
@@ -85,7 +85,7 @@ public class Lorann extends Mobile {
 			this.setSprite(spriteBL);
 			break;
 		}
-		this.icon=(this.icon+1)%4;
+		this.icon = (this.icon + 1) % 4;
 	}
 
 }

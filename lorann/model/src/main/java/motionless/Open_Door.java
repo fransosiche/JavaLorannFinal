@@ -10,15 +10,15 @@ import model.Sprite;
  * @version 1.0
  */
 
-public class Gate extends MotionlessElement {
+public class Open_Door extends MotionlessElement {
 
 	/** The Constant SPRITE. */
-	private static final Sprite SPRITE = new Sprite('O', "gate_closed.png");
+	private static final Sprite SPRITE = new Sprite('G', "gate_open.png");
 
 	/**
 	 * Instantiates a new gate.
 	 */
-	public Gate() {
+	public Open_Door() {
 		super(SPRITE, Permeability.BLOCKING);
 	}
 
