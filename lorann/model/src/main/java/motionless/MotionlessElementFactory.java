@@ -26,7 +26,15 @@ public class MotionlessElementFactory {
 	private static final VerticalBone verticalBone = new VerticalBone();
 
 	/** The Constant purse. */
-	private static final Coins coins = new Coins();
+	private static final Coins2Map1 coins2 = new Coins2Map1();
+	
+	private static final Coins1Map1 coins1 = new Coins1Map1();
+	
+	private static final Coins3Map1 coins3 = new Coins3Map1();
+	
+	private static final Coins4Map1 coins4 = new Coins4Map1();
+	
+	private static final Coins5Map1 coins5 = new Coins5Map1();
 
 	private static final Dirt dirt = new Dirt();
 
@@ -35,7 +43,7 @@ public class MotionlessElementFactory {
 	 */
 
 	private static MotionlessElement[] motionlessElements = { crystalBall, CD, OD, bone, horizontalBone, verticalBone,
-			coins, dirt };
+			coins1, coins2, coins3, coins4, coins5, dirt };
 
 	/**
 	 * Creates a new MotionlessElements object.
@@ -96,10 +104,24 @@ public class MotionlessElementFactory {
 	 *
 	 * @return the motionless element
 	 */
-	public static MotionlessElement createCoins() {
-		return coins;
+	public static MotionlessElement createCoins1() {
+		return coins1;
+	}
+	public static MotionlessElement createCoins2() {
+		return coins2;
+	}
+	
+	public static MotionlessElement createCoins3() {
+		return coins3;
 	}
 
+	public static MotionlessElement createCoins4() {
+		return coins4;
+	}
+	
+	public static MotionlessElement createCoins5() {
+		return coins5;
+	}
 	/**
 	 * Creates a new MotionlessElements object.
 	 *

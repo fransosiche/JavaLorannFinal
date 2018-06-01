@@ -19,7 +19,7 @@ public class Open_Door extends MotionlessElement {
 	 * Instantiates a new gate.
 	 */
 	public Open_Door() {
-		super(SPRITE, Permeability.BLOCKING);
+		super(SPRITE, Permeability.OPENGATE);
 	}
 
 }

@@ -13,13 +13,13 @@ import model.Sprite;
 public class Closed_Door extends MotionlessElement {
 
 	/** The Constant SPRITE. */
-	private static final Sprite SPRITE = new Sprite(',', "gate_open.png");
+	private static final Sprite SPRITE = new Sprite(',', "gate_closed.png");
 
 	/**
 	 * Instantiates a new gate.
 	 */
 	public Closed_Door() {
-		super(SPRITE, Permeability.BLOCKING);
+		super(SPRITE, Permeability.PENETRABLE.DEAD);
 	}
 
 }
