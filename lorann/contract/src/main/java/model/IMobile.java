@@ -33,6 +33,8 @@ public interface IMobile extends IPawn, IElement {
 	 * Do nothing.
 	 */
 	void doNothing();
+	
+	
 
 	/**
 	 * Gets the x.
@@ -49,6 +51,7 @@ public interface IMobile extends IPawn, IElement {
 	 */
 	@Override
 	int getY();
+	
 
 	/**
 	 * Checks if is alive.

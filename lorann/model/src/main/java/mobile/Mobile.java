@@ -3,6 +3,8 @@ package mobile;
 import java.awt.Point;
 import java.io.IOException;
 
+import javax.swing.JOptionPane;
+
 import element.Element;
 import element.Score;
 import model.IMap;
@@ -26,7 +28,7 @@ public abstract class Mobile extends Element implements IMobile {
 
 	/** The board. */
 	private IBoard board;
-	
+
 	private int score = 0;
 
 	/**
@@ -82,6 +84,13 @@ public abstract class Mobile extends Element implements IMobile {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
+			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1)
+					.getPermeability() == Permeability.COINS) {
+				this.CoinsHasbeenTaken(this.getX(), this.getY() - 1);
+			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1)
+					.getPermeability() == Permeability.WIN) {
+				GGWP();
+
 			}
 
 		}
@@ -98,13 +107,16 @@ public abstract class Mobile extends Element implements IMobile {
 					.getPermeability() == Permeability.OPENGATE) {
 
 				this.ImmobilhasChanged(this.getX() - 1, this.getY());
-		
-			}
-			else if(this.getMap().getOnTheMapXY(this.getX()-1, this.getY()).getPermeability() == Permeability.COINS){
-				this.CoinsHasbeenTaken(this.getX() -1, this.getY());
+
+			} else if (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY())
+					.getPermeability() == Permeability.COINS) {
+				this.CoinsHasbeenTaken(this.getX() - 1, this.getY());
+			} else if (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY())
+					.getPermeability() == Permeability.WIN) {
+				GGWP();
+
 			}
 		}
-		
 	}
 
 	@Override
@@ -114,12 +126,16 @@ public abstract class Mobile extends Element implements IMobile {
 					.getPermeability() == Permeability.PENETRABLE) {
 				this.setY(this.getY() + 1);
 				this.setHasMoved();
-			}
-			else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1).getPermeability() == Permeability.OPENGATE) {
+			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1)
+					.getPermeability() == Permeability.OPENGATE) {
 				this.ImmobilhasChanged(this.getX(), this.getY() + 1);
-			}
-			else if(this.getMap().getOnTheMapXY(this.getX(), this.getY()+1).getPermeability() == Permeability.COINS){
-				this.CoinsHasbeenTaken(this.getX(), this.getY()+1);
+			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1)
+					.getPermeability() == Permeability.COINS) {
+				this.CoinsHasbeenTaken(this.getX(), this.getY() + 1);
+			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1)
+					.getPermeability() == Permeability.WIN) {
+				GGWP();
+
 			}
 		}
 	}
@@ -133,12 +149,13 @@ public abstract class Mobile extends Element implements IMobile {
 			} else if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY())
 					.getPermeability() == Permeability.OPENGATE) {
 				this.ImmobilhasChanged(this.getX() + 1, this.getY());
-			} 
-			else if(this.getMap().getOnTheMapXY(this.getX()+1, this.getY()).getPermeability() == Permeability.COINS){
-					this.CoinsHasbeenTaken(this.getX()+1, this.getY());
-				}
-			else if(this.getMap().getOnTheMapXY(this.getX()+1, this.getY()).getPermeability() == Permeability.WIN){
-				System.out.println("WIN");
+			} else if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY())
+					.getPermeability() == Permeability.COINS) {
+				this.CoinsHasbeenTaken(this.getX() + 1, this.getY());
+			} else if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY())
+					.getPermeability() == Permeability.WIN) {
+				GGWP();
+
 			}
 		}
 	}
@@ -203,6 +220,10 @@ public abstract class Mobile extends Element implements IMobile {
 		return this.position;
 	}
 
+	public void GGWP(){
+		JOptionPane.showMessageDialog(null, "You Win");
+		System.exit(0);
+	}
 	/**
 	 * Sets the position.
 	 *
@@ -251,12 +272,11 @@ public abstract class Mobile extends Element implements IMobile {
 		this.getMap().getOnTheMapXY(x, y).setSprite(new Sprite(' ', "ground.png"));
 		this.getMap().getOnTheMapXY(x, y).setPermeability(Permeability.PENETRABLE);
 		this.getMap().getOnTheMapXY(x, y).getSprite().loadImage();
-		score = score +1;
+		score = score + 1;
 		System.out.print("Your score : ");
 		System.out.println(score);
-		
-				}
-			
+
+	}
 
 	/**
 	 * Gets the board.

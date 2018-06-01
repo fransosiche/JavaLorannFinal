@@ -11,7 +11,7 @@ public interface ILorannController {
      *             the interrupted exception
 	 * @throws IOException 
      */
-    void play() throws InterruptedException, IOException;
+    void moove() throws InterruptedException, IOException;
 
     /**
      * Gets the order peformer.
