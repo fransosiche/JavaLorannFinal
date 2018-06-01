@@ -1,5 +1,11 @@
 package view;
 
+import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.Point;
+import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -7,17 +13,15 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-import java.awt.Dimension;
-import java.awt.Rectangle;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
 import controller.IOrderPerformer;
 import controller.UserOrder;
 import element.Element;
+import mobile.Golem;
+import mobile.Masked;
 import model.IMap;
 import model.IMobile;
 import showboard.BoardFrame;
+import showboard.IPawn;
 
 /**
  * <h1>Class LorannView</h1>
@@ -25,7 +29,7 @@ import showboard.BoardFrame;
  * @author group2
  * @version 1.0
  */
-public class LorannView implements Runnable, KeyListener, ILorannView {
+public class LorannView implements Runnable, KeyListener, ILorannView, IPawn {
 
 	/** The Constant length. */
 	private int squareSize = 80;
@@ -38,10 +42,12 @@ public class LorannView implements Runnable, KeyListener, ILorannView {
 	/** Lorann. */
 	private IMobile Lorann;
 
-	private ArrayList<Element> monsters;
-
 	/** The order performer. */
 	private IOrderPerformer orderPerformer;
+
+	private ArrayList<Golem> monster;
+	
+	private ArrayList<Masked> monster1;
 
 	/**
 	 * Instantiates a new insane vehicles View.
@@ -53,11 +59,20 @@ public class LorannView implements Runnable, KeyListener, ILorannView {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public LorannView(final IMap map, final IMobile Lorann) throws IOException {
+	public LorannView(final IMap map, final IMobile Lorann, ArrayList<Golem> monster, ArrayList<Masked> monster1) throws IOException {
 		this.setMap(map);
 		this.setLorann(Lorann);
-		// this.setMonsters(this.map.);
+		this.setMonster(monster);
+		this.setMonster1(monster1);
 		this.getLorann().getSprite().loadImage();
+		
+		for (Golem monster2 : monster) {
+			monster2.getSprite().loadImage();
+		}
+		for (Masked monster3 : monster1) {
+			monster3.getSprite().loadImage();
+		}
+		
 		this.setCloseView(new Rectangle(0, 0, this.getMap().getWidth(), this.getMap().getHeight()));
 		SwingUtilities.invokeLater(this);
 	}
@@ -86,11 +101,20 @@ public class LorannView implements Runnable, KeyListener, ILorannView {
 			}
 		}
 
-		boardFrame.addPawn(this.getLorann());
+		boardFrame.addPawn(getLorann());
+		
+		for (Golem monster2 : monster) {
+			boardFrame.addPawn(monster2);
+		}
+		
+		for (Masked monster3 : monster1) {
+			boardFrame.addPawn(monster3);
+		}
 
 		this.getMap().getObservable().addObserver(boardFrame.getObserver());
 
 		boardFrame.setVisible(true);
+		
 	}
 
 	/**
@@ -237,14 +261,44 @@ public class LorannView implements Runnable, KeyListener, ILorannView {
 		this.closeView = closeView;
 	}
 
-	public ArrayList<Element> getMonsters() {
-		return monsters;
+	@Override
+	public Image getImage() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public void setMonsters(ArrayList<Element> monsters) {
-		this.monsters = monsters;
+	@Override
+	public int getX() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
-	
+	@Override
+	public int getY() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Point getPosition() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<Golem> getMonster() {
+		return this.monster;
+	}
+
+	public void setMonster(ArrayList<Golem> monster) {
+		this.monster = monster;
+	}
+
+	public ArrayList<Masked> getMonster1() {
+		return monster1;
+	}
+
+	public void setMonster1(ArrayList<Masked> monster1) {
+		this.monster1 = monster1;
+	}
 
 }

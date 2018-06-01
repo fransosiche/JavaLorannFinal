@@ -220,10 +220,11 @@ public abstract class Mobile extends Element implements IMobile {
 		return this.position;
 	}
 
-	public void GGWP(){
+	public void GGWP() {
 		JOptionPane.showMessageDialog(null, "You Win");
 		System.exit(0);
 	}
+
 	/**
 	 * Sets the position.
 	 *

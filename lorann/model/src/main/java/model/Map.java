@@ -8,12 +8,8 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 import element.Element;
-import mobile.Golem;
-import mobile.Monster;
-import mobile.Monster3;
-import mobile.Monster4;
+import model.dao.LorannDAO;
 import motionless.MotionlessElementFactory;
-import model.dao.*;
 
 public class Map extends Observable implements IMap {
 
@@ -25,10 +21,9 @@ public class Map extends Observable implements IMap {
 
 	/** The on the road. */
 	private IElement[][] onTheMap;
-	
-	private ArrayList<Element> monster;
 
 	private LorannDAO dao = new LorannDAO();
+	
 
 	/**
 	 * Instantiates a new road with the content of the file fileName.
@@ -66,10 +61,9 @@ public class Map extends Observable implements IMap {
 		while (y != this.getHeight()) {
 			for (int x = 0; x != (this.getWidth()); x++) {
 				this.setOnTheMapXY(MotionlessElementFactory.getFromFileSymbol(line.toCharArray()[x]), x, y);
-				if(this.getOnTheMapXY(x, y) == null){
-					for(int i=1; i<5; i++){
-						
-						
+				if (this.getOnTheMapXY(x, y) == null) {
+					for (int i = 1; i < 5; i++) {
+
 					}
 				}
 			}
@@ -165,11 +159,10 @@ public class Map extends Observable implements IMap {
 		return this;
 	}
 
+	@Override
 	public ArrayList<Element> getMonster() {
-		return monster;
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	public void setMonster(ArrayList<Element> monster) {
-		this.monster = monster;
-	}
 }

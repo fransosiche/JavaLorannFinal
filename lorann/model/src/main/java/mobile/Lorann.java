@@ -1,6 +1,7 @@
 package mobile;
 
 import java.io.IOException;
+
 import model.IMap;
 import model.Permeability;
 import model.Sprite;
@@ -31,8 +32,6 @@ public class Lorann extends Mobile {
 	/** The Constant spriteTurnDown. */
 	private static final Sprite spriteTurnDown = new Sprite('c', "lorann_b.png");
 
-	private int icon = 0;
-
 	public Lorann(final int x, final int y, IMap map) throws IOException {
 		super(x, y, spriteUL, map, Permeability.BLOCKING);
 		spriteUL.loadImage();
@@ -45,47 +44,33 @@ public class Lorann extends Mobile {
 		spriteTurnUp.loadImage();
 	}
 
-	
 	public void moveUp() throws IOException {
 		super.moveUp();
 		this.setSprite(spriteTurnUp);
 	}
 
-	
 	public void moveLeft() throws IOException {
 		super.moveLeft();
 		this.setSprite(spriteTurnLeft);
 	}
 
-	
 	public void moveDown() throws IOException {
 		super.moveDown();
 		this.setSprite(spriteTurnDown);
 	}
 
-	
 	public void moveRight() throws IOException {
 		super.moveRight();
 		this.setSprite(spriteTurnRight);
 	}
 
-	
 	public void doNothing() {
-		switch (this.icon) {
-		case 0:
-			this.setSprite(spriteUL);
-			break;
-		case 1:
-			this.setSprite(spriteUR);
-			break;
-		case 2:
-			this.setSprite(spriteBR);
-			break;
-		case 3:
-			this.setSprite(spriteBL);
-			break;
-		}
-		this.icon = (this.icon + 1) % 4;
+
 	}
 
+	/**
+	 * public void SpriteModif() {
+	 * 
+	 * if (getSprite() == Sprite.lorann_b ); this.setSprite(lorann_r); }
+	 **/
 }

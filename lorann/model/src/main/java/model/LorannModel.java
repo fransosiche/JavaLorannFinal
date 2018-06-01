@@ -1,19 +1,30 @@
 package model;
 
 import java.io.IOException;
-
 import java.sql.SQLException;
-import mobile.Lorann;
+import java.util.ArrayList;
 
-public class LorannModel implements IModel{
-	
+import mobile.Lorann;
+import mobile.Masked;
+import mobile.Golem;
+
+public class LorannModel implements IModel {
+
 	private IMap map;
-	
+
 	private IMobile lorann;
+
+	private ArrayList<Golem> monster = new ArrayList<Golem>();
 	
-	public LorannModel(final int level, final int lorannX, final int lorannY) throws IOException, SQLException{
+	private ArrayList<Masked> monster1 = new ArrayList<Masked>();
+
+	public LorannModel(final int level, final int lorannX, final int lorannY, final int monsterX, final int monsterY)
+			throws IOException, SQLException {
 		this.setMap(new Map(level));
 		this.setLorann(new Lorann(lorannX, lorannY, this.getMap()));
+		this.getMonster().add(new Golem(1, 10, map, Permeability.MONSTER));
+		this.getMonster1().add(new Masked(10, 5, map, Permeability.MONSTER));
+
 	}
 
 	@Override
@@ -21,14 +32,14 @@ public class LorannModel implements IModel{
 
 	}
 
-    public IMobile getLorann() {
-        return this.lorann;
-    }
-    
-    private void setLorann(Lorann lorann) {
-        this.lorann = (IMobile) lorann;
-    }
-	
+	public IMobile getLorann() {
+		return this.lorann;
+	}
+
+	private void setLorann(Lorann lorann) {
+		this.lorann = (IMobile) lorann;
+	}
+
 	public IMap getMap() {
 		return map;
 	}
@@ -37,5 +48,20 @@ public class LorannModel implements IModel{
 		this.map = map;
 	}
 
+	public ArrayList<Golem> getMonster() {
+		return monster;
+	}
+
+	public void setMonster(ArrayList<Golem> monster) {
+		this.monster = monster;
+	}
+
+	public ArrayList<Masked> getMonster1() {
+		return monster1;
+	}
+
+	public void setMonster1(ArrayList<Masked> monster1) {
+		this.monster1 = monster1;
+	}
 
 }

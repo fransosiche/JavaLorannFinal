@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.Point;
 import java.io.IOException;
 
 import showboard.IPawn;

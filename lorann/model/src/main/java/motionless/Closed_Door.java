@@ -19,7 +19,7 @@ public class Closed_Door extends MotionlessElement {
 	 * Instantiates a new gate.
 	 */
 	public Closed_Door() {
-		super(SPRITE, Permeability.PENETRABLE.DEAD);
+		super(SPRITE, Permeability.PENETRABLE);
 	}
 
 }
