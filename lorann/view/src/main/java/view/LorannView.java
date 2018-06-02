@@ -26,7 +26,7 @@ import showboard.IPawn;
 /**
  * <h1>Class LorannView</h1>
  *
- * @author group2
+ * @author group1
  * @version 1.0
  */
 public class LorannView implements Runnable, KeyListener, ILorannView, IPawn {

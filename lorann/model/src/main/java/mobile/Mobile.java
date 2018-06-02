@@ -2,6 +2,7 @@ package mobile;
 
 import java.awt.Point;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 
@@ -160,7 +161,49 @@ public abstract class Mobile extends Element implements IMobile {
 		}
 	}
 
-	@Override
+	public void moveRightM() throws IOException {
+		if (this.getX() != this.getMap().getWidth()) {
+			if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY())
+					.getPermeability() == Permeability.PENETRABLE) {
+				this.setX(this.getX() + 1);
+				this.setHasMoved();
+			}
+		}
+	}
+
+	public void moveDownM() throws IOException {
+		if (this.getY() != this.getMap().getHeight()) {
+			if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1)
+					.getPermeability() == Permeability.PENETRABLE) {
+				this.setY(this.getY() + 1);
+				this.setHasMoved();
+			}
+		}
+	}
+
+	public void moveLeftM() throws IOException {
+		if (this.getX() != 0) {
+			if (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY())
+					.getPermeability() == Permeability.PENETRABLE) {
+				this.setX(this.getX() - 1);
+				this.setHasMoved();
+			}
+		}
+	}
+
+	public void moveUpM() throws IOException {
+		if (this.getY() != 0) {
+			if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1)
+					.getPermeability() == Permeability.PENETRABLE) {
+				this.setY(this.getY() - 1);
+				this.setHasMoved();
+			}
+		}
+	}
+
+	/*
+	 * public void IA1(int px, int py) { px = setpx.random(); }
+	 */
 	public void doNothing() {
 		this.setHasMoved();
 	}
@@ -207,13 +250,13 @@ public abstract class Mobile extends Element implements IMobile {
 	public void die() {
 		this.alive = false;
 		this.setHasMoved();
+		JOptionPane.showMessageDialog(null, "You loose");
+		System.exit(0);
+
 	}
 
 	public Boolean isCrashed() {
 		return false;
-		// TODO Auto-generated method stub
-		// return this.getMap().getOnTheMapXY(this.getX(),
-		// this.getY()).getPermeability() == Permeability.BLOCKING;
 	}
 
 	public Point getPosition() {
@@ -221,7 +264,7 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	public void GGWP() {
-		JOptionPane.showMessageDialog(null, "You Win");
+		JOptionPane.showMessageDialog(null, "You Win, your score is");
 		System.exit(0);
 	}
 
@@ -277,6 +320,14 @@ public abstract class Mobile extends Element implements IMobile {
 		System.out.print("Your score : ");
 		System.out.println(score);
 
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
 	}
 
 	/**

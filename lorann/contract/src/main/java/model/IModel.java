@@ -2,7 +2,6 @@ package model;
 
 import java.sql.SQLException;
 
-
 /**
  * <h1>The Interface IModel.</h1>
  *
@@ -11,17 +10,19 @@ import java.sql.SQLException;
  */
 public interface IModel {
 
-    /**
-     * Gets the level by id.
-     *
-     * @param id
-     *            the id
-     * @return the example by id
-     * @throws SQLException
-     *             the SQL exception
-     */
-    void getLevelById(int id) throws SQLException;
+	/**
+	 * Gets the level by id.
+	 *
+	 * @param id
+	 *            the id
+	 * @return the example by id
+	 * @throws SQLException
+	 *             the SQL exception
+	 */
+	void getLevelById(int id) throws SQLException;
 
 	IMobile getLorann();
+
+	//IMobile getMonster();
 
 }

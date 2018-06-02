@@ -26,6 +26,8 @@ public class LorannController implements ILorannController, IOrderPerformer {
 
 	private UserOrder stackOrder;
 
+	private static final int speedMonster = 200;
+
 	/**
 	 * Instantiates a new controller facade.
 	 *
@@ -69,9 +71,31 @@ public class LorannController implements ILorannController, IOrderPerformer {
 			this.clearStackOrder();
 
 		}
-		this.getView().displayMessage("GAME OVER");
+
 	}
 
+	
+	/*public final void mooveMonster() throws InterruptedException, IOException {
+		while (this.getModel().getMonster().isAlive()) {
+			Thread.sleep(speed);
+			switch (this.getStackOrder()) {
+			case RIGHT:
+				this.getModel().getLorann().moveRightM();
+				break;
+			case LEFT:
+				this.getModel().getLorann().moveLeftM();
+				break;
+			case UP:
+				this.getModel().getLorann().moveUpM();
+				break;
+			case DOWN:
+				this.getModel().getLorann().moveDownM();
+				break;
+				
+			}
+		}
+	}
+	*/
 	/**
 	 * Gets the view.
 	 *
