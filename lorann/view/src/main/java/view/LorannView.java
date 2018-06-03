@@ -46,7 +46,7 @@ public class LorannView implements Runnable, KeyListener, ILorannView, IPawn {
 	private IOrderPerformer orderPerformer;
 
 	private ArrayList<Golem> monster;
-	
+
 	private ArrayList<Masked> monster1;
 
 	/**
@@ -59,7 +59,7 @@ public class LorannView implements Runnable, KeyListener, ILorannView, IPawn {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public LorannView(final IMap map, final IMobile Lorann, ArrayList<Golem> monster, ArrayList<Masked> monster1) throws IOException {
+	public LorannView(final IMap map, final IMobile Lorann, final ArrayList<Golem> monster, final ArrayList<Masked> monster1) throws IOException {
 		this.setMap(map);
 		this.setLorann(Lorann);
 		this.setMonster(monster);
@@ -102,11 +102,11 @@ public class LorannView implements Runnable, KeyListener, ILorannView, IPawn {
 		}
 
 		boardFrame.addPawn(getLorann());
-		
+
 		for (Golem monster2 : monster) {
 			boardFrame.addPawn(monster2);
 		}
-		
+
 		for (Masked monster3 : monster1) {
 			boardFrame.addPawn(monster3);
 		}
@@ -114,7 +114,7 @@ public class LorannView implements Runnable, KeyListener, ILorannView, IPawn {
 		this.getMap().getObservable().addObserver(boardFrame.getObserver());
 
 		boardFrame.setVisible(true);
-		
+
 	}
 
 	/**

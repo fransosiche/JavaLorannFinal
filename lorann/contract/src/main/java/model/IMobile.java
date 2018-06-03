@@ -33,22 +33,22 @@ public interface IMobile extends IPawn, IElement {
 	 */
 	void doNothing();
 	
-	/*void moveUpM() throws IOException;
+	void moveUpM() throws IOException;
 
 	/**
 	 * Move left.
 	 */
-	//void moveLeftM() throws IOException;
+	void moveLeftM() throws IOException;
 
 	/**
 	 * Move down.
 	 */
-	//void moveDownM() throws IOException;
+	void moveDownM() throws IOException;
 
 	/**
 	 * Move right.
 	 */
-	//void moveRightM() throws IOException;
+	void moveRightM() throws IOException;
 	
 
 	/**

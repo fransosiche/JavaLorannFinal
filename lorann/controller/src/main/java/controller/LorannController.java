@@ -75,7 +75,7 @@ public class LorannController implements ILorannController, IOrderPerformer {
 	}
 
 	
-	/*public final void mooveMonster() throws InterruptedException, IOException {
+	/**public final void mooveMonster() throws InterruptedException, IOException {
 		while (this.getModel().getMonster().isAlive()) {
 			Thread.sleep(speed);
 			switch (this.getStackOrder()) {
@@ -95,7 +95,7 @@ public class LorannController implements ILorannController, IOrderPerformer {
 			}
 		}
 	}
-	*/
+	**/
 	/**
 	 * Gets the view.
 	 *

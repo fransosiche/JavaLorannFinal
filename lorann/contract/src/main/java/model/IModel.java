@@ -23,6 +23,6 @@ public interface IModel {
 
 	IMobile getLorann();
 
-	//IMobile getMonster();
+	//ArrayList<Golem> getMonster();
 
 }

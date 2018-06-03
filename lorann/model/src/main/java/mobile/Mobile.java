@@ -92,8 +92,10 @@ public abstract class Mobile extends Element implements IMobile {
 					.getPermeability() == Permeability.WIN) {
 				GGWP();
 
+			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1)
+					.getPermeability() == Permeability.MONSTER) {
+				die();
 			}
-
 		}
 	}
 
@@ -116,6 +118,10 @@ public abstract class Mobile extends Element implements IMobile {
 					.getPermeability() == Permeability.WIN) {
 				GGWP();
 
+			} else if (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY())
+					.getPermeability() == Permeability.MONSTER) {
+				die();
+
 			}
 		}
 	}
@@ -137,6 +143,10 @@ public abstract class Mobile extends Element implements IMobile {
 					.getPermeability() == Permeability.WIN) {
 				GGWP();
 
+			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1)
+					.getPermeability() == Permeability.MONSTER) {
+				die();
+
 			}
 		}
 	}
@@ -156,6 +166,10 @@ public abstract class Mobile extends Element implements IMobile {
 			} else if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY())
 					.getPermeability() == Permeability.WIN) {
 				GGWP();
+
+			} else if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY())
+					.getPermeability() == Permeability.MONSTER) {
+				die();
 
 			}
 		}
@@ -265,6 +279,7 @@ public abstract class Mobile extends Element implements IMobile {
 
 	public void GGWP() {
 		JOptionPane.showMessageDialog(null, "You Win, your score is");
+		JOptionPane.showMessageDialog(null, getScore());
 		System.exit(0);
 	}
 

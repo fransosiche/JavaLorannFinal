@@ -22,7 +22,6 @@ public class LorannModel implements IModel {
 			throws IOException, SQLException {
 		this.setMap(new Map(level));
 		this.setLorann(new Lorann(lorannX, lorannY, this.getMap()));
-		this.getMonster();
 
 		this.getMonster().add(new Golem(10, 8, map, Permeability.MONSTER));
 		this.getMonster1().add(new Masked(5, 5, map, Permeability.MONSTER));
