@@ -8,17 +8,18 @@ import model.Sprite;
 import showboard.IPawn;
 
 /**
- * <h1>Masked class</h1>
+ * <h1>Pauline Class.</h1>
  *
  * @author group1
  * @version 1.0
  */
-public class Masked extends Mobile implements IPawn {
 
-	private static final Sprite sprite1 = new Sprite('c', "monster_2.png");
+public class Pauline extends Mobile implements IPawn {
+
+	private static final Sprite sprite1 = new Sprite('c', "monster_3.png");
 
 	/**
-	 * Constructor of Masked
+	 * Contructor
 	 * 
 	 * @param px
 	 * @param py
@@ -26,7 +27,7 @@ public class Masked extends Mobile implements IPawn {
 	 * @param permeability
 	 * @throws IOException
 	 */
-	public Masked(int px, int py, IMap map, Permeability permeability) throws IOException {
+	public Pauline(int px, int py, IMap map, Permeability permeability) throws IOException {
 		super(px, py, sprite1, map, Permeability.MONSTER);
 		sprite1.loadImage();
 

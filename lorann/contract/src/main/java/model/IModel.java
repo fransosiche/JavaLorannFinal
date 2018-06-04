@@ -21,13 +21,13 @@ public interface IModel {
 	 *             the SQL exception
 	 */
 	void getLevelById(int id) throws SQLException;
-	
+
 	/*
 	 * get the Lorann
 	 */
 
 	IMobile getLorann();
-	
+
 	/*
 	 * get the Monster arraylist
 	 */

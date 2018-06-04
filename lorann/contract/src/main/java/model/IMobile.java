@@ -41,7 +41,6 @@ public interface IMobile extends IPawn, IElement {
 	 */
 	void doNothing();
 
-	
 	void moveUpM() throws IOException;
 
 	/**
@@ -58,6 +57,7 @@ public interface IMobile extends IPawn, IElement {
 	 * Move right.
 	 */
 	void moveRightM() throws IOException;
+
 	/**
 	 * Gets the x.
 	 *
@@ -73,6 +73,10 @@ public interface IMobile extends IPawn, IElement {
 	 */
 	@Override
 	int getY();
+
+	int getPX();
+
+	int getPY();
 
 	/**
 	 * Checks if is alive.

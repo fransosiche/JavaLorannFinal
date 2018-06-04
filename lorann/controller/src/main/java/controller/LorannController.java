@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import java.util.Random;
 
 import model.IMobile;
 import model.IModel;
@@ -40,6 +41,25 @@ public class LorannController implements ILorannController, IOrderPerformer {
 		this.clearStackOrder();
 	}
 
+	/**
+	 * 
+	 * @param H
+	 * @return
+	 * @throws IOException
+	 */
+	public void random() throws IOException {
+		int H = (int) (Math.random() * (4 - 0));
+		if (H == 0) {
+			this.getModel().getMonster().get(1).moveDownM();
+		} else if (H == 1) {
+			this.getModel().getMonster().get(1).moveUpM();
+		} else if (H == 2) {
+			this.getModel().getMonster().get(1).moveLeftM();
+		} else if (H == 3) {
+			this.getModel().getMonster().get(1).moveRightM();
+		}
+	}
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -53,20 +73,38 @@ public class LorannController implements ILorannController, IOrderPerformer {
 			case RIGHT:
 				this.getModel().getLorann().moveRight();
 
+				this.getModel().getMonster().get(0).moveRightM();
+				random();
+
 				break;
 			case LEFT:
 				this.getModel().getLorann().moveLeft();
+
+				this.getModel().getMonster().get(0).moveLeftM();
+				random();
+
 				break;
 			case UP:
 				this.getModel().getLorann().moveUp();
+
+				this.getModel().getMonster().get(0).moveUpM();
+				random();
+
 				break;
 			case DOWN:
 				this.getModel().getLorann().moveDown();
+				this.getModel().getMonster().get(0).moveDownM();
+				random();
+
 				break;
 
 			case NOP:
 			default:
+
 				this.getModel().getLorann().doNothing();
+				random();
+				//this.getModel().getMonster().get(3).moveLock();
+
 				break;
 			}
 			this.clearStackOrder();

@@ -20,6 +20,7 @@ public class Golem extends Mobile implements IPawn {
 
 	/**
 	 * Contructor
+	 * 
 	 * @param px
 	 * @param py
 	 * @param map
@@ -32,14 +33,6 @@ public class Golem extends Mobile implements IPawn {
 
 		// TODO Auto-generated constructor stub
 
-	}
-
-	/**
-	 * Method IA
-	 * @throws IOException
-	 */
-	public void IA() throws IOException {
-		super.moveLeft();
 	}
 
 }

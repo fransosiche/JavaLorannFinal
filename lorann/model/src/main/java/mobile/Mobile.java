@@ -2,6 +2,7 @@ package mobile;
 
 import java.awt.Point;
 import java.io.IOException;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 
@@ -35,6 +36,9 @@ public abstract class Mobile extends Element implements IMobile {
 	private IBoard board;
 
 	private int score = 0;
+
+	private int PX;
+	private int PY;
 
 	/**
 	 * Instantiates a new mobile.
@@ -76,6 +80,7 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Method to moove UP
 	 */
 	public void moveUp() throws IOException {
+
 		if (this.getY() != 0) {
 			if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1)
 					.getPermeability() == Permeability.PENETRABLE) {
@@ -110,6 +115,7 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Method to moove left
 	 */
 	public void moveLeft() throws IOException {
+
 		if (this.getX() != 0) {
 			if (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY())
 					.getPermeability() == Permeability.PENETRABLE) {
@@ -139,6 +145,7 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Method to moove down
 	 */
 	public void moveDown() throws IOException {
+
 		if (this.getY() != this.getMap().getHeight()) {
 			if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1)
 					.getPermeability() == Permeability.PENETRABLE) {
@@ -166,6 +173,7 @@ public abstract class Mobile extends Element implements IMobile {
 	 * Method to moove right
 	 */
 	public void moveRight() throws IOException {
+
 		if (this.getX() != this.getMap().getWidth()) {
 			if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY())
 					.getPermeability() == Permeability.PENETRABLE) {
@@ -189,6 +197,7 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	public void moveRightM() throws IOException {
+
 		if (this.getX() != this.getMap().getWidth()) {
 			if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY())
 					.getPermeability() == Permeability.PENETRABLE) {
@@ -199,6 +208,7 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	public void moveDownM() throws IOException {
+
 		if (this.getY() != this.getMap().getHeight()) {
 			if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1)
 					.getPermeability() == Permeability.PENETRABLE) {
@@ -209,17 +219,19 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	public void moveLeftM() throws IOException {
+
 		if (this.getX() != 0) {
 			if (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY())
 					.getPermeability() == Permeability.PENETRABLE) {
 				this.setX(this.getX() - 1);
 				this.setHasMoved();
-				System.out.println("oui");
+
 			}
 		}
 	}
 
 	public void moveUpM() throws IOException {
+
 		if (this.getY() != 0) {
 			if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1)
 					.getPermeability() == Permeability.PENETRABLE) {
@@ -228,6 +240,25 @@ public abstract class Mobile extends Element implements IMobile {
 			}
 		}
 	}
+
+	/*public void moveLock() throws IOException {
+		while (this.getMap().getOnTheMapXY(this.getX(), this.getY()) != this.getMap().getOnTheMapXY(this.getPX(),
+				this.getPY())) {
+			if (getX() < getPX()) {
+				moveDownM();
+			}
+			if (getX() > getPX()) {
+				moveUpM();
+			}
+			if (getY() < getPY()) {
+				moveLeftM();
+			}
+			if (getY() < getPY()) {
+				moveRightM();
+			}
+		}
+	}
+	*/
 
 	/**
 	 * Method donothing
@@ -261,7 +292,8 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	/**
-	 * get the Y 
+	 * get the Y
+	 * 
 	 * @return the position of X
 	 */
 	public final int getY() {
@@ -270,11 +302,24 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	/**
-	 * get the X 
+	 * get the X
+	 * 
 	 * @return the position of X
 	 */
 	public final int getX() {
 		return this.getPosition().x;
+	}
+
+	public final int getPX() {
+
+		return this.getPX();
+
+	}
+
+	public final int getPY() {
+
+		return this.getPY();
+
 	}
 
 	/**
@@ -285,7 +330,8 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	/**
-	 * get the map 
+	 * get the map
+	 * 
 	 * @return the map
 	 */
 	public IMap getMap() {
@@ -302,8 +348,7 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	/**
-	 * Boolean if lorann is alive
-	 * return alive
+	 * Boolean if lorann is alive return alive
 	 */
 	public Boolean isAlive() {
 		return alive;
@@ -321,8 +366,7 @@ public abstract class Mobile extends Element implements IMobile {
 	}
 
 	/**
-	 * methid Boolean iscrashed
-	 * return false
+	 * methid Boolean iscrashed return false
 	 */
 	public Boolean isCrashed() {
 		return false;
