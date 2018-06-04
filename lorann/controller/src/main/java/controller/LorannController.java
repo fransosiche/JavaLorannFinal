@@ -59,7 +59,31 @@ public class LorannController implements ILorannController, IOrderPerformer {
 			this.getModel().getMonster().get(1).moveRightM();
 		}
 	}
-
+	public void randomv2() throws IOException {
+		int W = (int) (Math.random() * (4 - 0));
+		if (W == 0) {
+			this.getModel().getMonster().get(2).moveDownM();
+		} else if (W == 1) {
+			this.getModel().getMonster().get(2).moveUpM();
+		} else if (W == 2) {
+			this.getModel().getMonster().get(2).moveLeftM();
+		} else if (W == 3) {
+			this.getModel().getMonster().get(2).moveRightM();
+		}
+	}
+	
+	public void randomv3() throws IOException {
+		int G = (int) (Math.random() * (4 - 0));
+		if (G == 0) {
+			this.getModel().getMonster().get(3).moveDownM();
+		} else if (G == 1) {
+			this.getModel().getMonster().get(3).moveUpM();
+		} else if (G == 2) {
+			this.getModel().getMonster().get(3).moveLeftM();
+		} else if (G == 3) {
+			this.getModel().getMonster().get(3).moveRightM();
+		}
+	}
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -104,7 +128,8 @@ public class LorannController implements ILorannController, IOrderPerformer {
 				this.getModel().getLorann().doNothing();
 				random();
 				//this.getModel().getMonster().get(3).moveLock();
-
+				//randomv2();
+				randomv3();
 				break;
 			}
 			this.clearStackOrder();

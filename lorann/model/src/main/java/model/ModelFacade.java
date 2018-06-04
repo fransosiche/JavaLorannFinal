@@ -23,8 +23,8 @@ public class ModelFacade implements IModel {
 		this.setLorann(new Lorann(lorannX, lorannY, this.getMap()));
 		this.getMonster().add(new Golem(10, 5, map, Permeability.MONSTER));
 		this.getMonster().add(new Masked(5, 5, map, Permeability.MONSTER));
-		this.getMonster().add(new Zombie(4, 10, map, Permeability.MONSTER));
-		this.getMonster().add(new Pauline(15, 7, map, Permeability.MONSTER));
+		this.getMonster().add(new Zombie(4, 7, map, Permeability.MONSTER));
+		this.getMonster().add(new Pauline(15, 6, map, Permeability.MONSTER));
 	}
 
 	@Override

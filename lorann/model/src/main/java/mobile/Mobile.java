@@ -108,6 +108,7 @@ public abstract class Mobile extends Element implements IMobile {
 					.getPermeability() == Permeability.MONSTER) {
 				die();
 			}
+
 		}
 	}
 
@@ -241,24 +242,13 @@ public abstract class Mobile extends Element implements IMobile {
 		}
 	}
 
-	/*public void moveLock() throws IOException {
-		while (this.getMap().getOnTheMapXY(this.getX(), this.getY()) != this.getMap().getOnTheMapXY(this.getPX(),
-				this.getPY())) {
-			if (getX() < getPX()) {
-				moveDownM();
-			}
-			if (getX() > getPX()) {
-				moveUpM();
-			}
-			if (getY() < getPY()) {
-				moveLeftM();
-			}
-			if (getY() < getPY()) {
-				moveRightM();
-			}
-		}
-	}
-	*/
+	/*
+	 * public void moveLock() throws IOException { while
+	 * (this.getMap().getOnTheMapXY(this.getX(), this.getY()) !=
+	 * this.getMap().getOnTheMapXY(this.getPX(), this.getPY())) { if (getX() <
+	 * getPX()) { moveDownM(); } if (getX() > getPX()) { moveUpM(); } if (getY()
+	 * < getPY()) { moveLeftM(); } if (getY() < getPY()) { moveRightM(); } } }
+	 */
 
 	/**
 	 * Method donothing
