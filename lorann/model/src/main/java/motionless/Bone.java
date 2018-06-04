@@ -6,13 +6,13 @@ import model.Sprite;
 /**
  * <h1>Bone Class</h1>
  *
- * @author group2
+ * @author group1
  * @version 1.0
  */
 
 public class Bone extends MotionlessElement {
 
-	/** The Constant SPRITE. */
+	/** The Constant SPRITE */
 	private static final Sprite SPRITE = new Sprite('!', "bone.png");
 
 	/**

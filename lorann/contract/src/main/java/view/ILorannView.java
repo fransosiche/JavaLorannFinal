@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 /**
  * <h1>Interface ILorannView.</h1>
  *
- * @author group2
+ * @author group1
  * @version 1.0
  */
 public interface ILorannView {
@@ -17,6 +17,12 @@ public interface ILorannView {
      *            the message
      */
     void displayMessage(String message);
+    /*
+     * Key Released
+     */
 	void keyReleased(KeyEvent keyEvent);
+	/*
+	 * Key Typed
+	 */
 	void keyTyped(KeyEvent keyEvent);
 }

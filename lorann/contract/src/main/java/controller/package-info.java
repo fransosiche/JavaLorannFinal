@@ -1,7 +1,7 @@
 /**
  * Provides all contracts for the controller component.
  *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author groupe 1
  * @version 1.0
  */
 package controller;

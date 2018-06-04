@@ -9,7 +9,7 @@ import model.Sprite;
 /**
  * <h1>Element Class</h1>
  *
- * @author group2
+ * @author group1
  * @version 1.0
  * @see ISquare
  */

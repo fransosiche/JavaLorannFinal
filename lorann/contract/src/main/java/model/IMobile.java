@@ -3,7 +3,15 @@ package model;
 import java.io.IOException;
 
 import showboard.IPawn;
+import showboard.ISquare;
 
+/**
+ * <h1>Interface IMobile</h1>
+ *
+ * @author group1
+ * @version 1.0
+ * @see ISquare
+ */
 public interface IMobile extends IPawn, IElement {
 
 	/**
@@ -32,6 +40,7 @@ public interface IMobile extends IPawn, IElement {
 	 * Do nothing.
 	 */
 	void doNothing();
+
 	
 	void moveUpM() throws IOException;
 
@@ -49,8 +58,6 @@ public interface IMobile extends IPawn, IElement {
 	 * Move right.
 	 */
 	void moveRightM() throws IOException;
-	
-
 	/**
 	 * Gets the x.
 	 *
@@ -66,7 +73,6 @@ public interface IMobile extends IPawn, IElement {
 	 */
 	@Override
 	int getY();
-	
 
 	/**
 	 * Checks if is alive.

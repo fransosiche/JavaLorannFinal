@@ -1,11 +1,12 @@
 package model;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * <h1>The Interface IModel.</h1>
  *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author groupe 1
  * @version 1.0
  */
 public interface IModel {
@@ -20,9 +21,17 @@ public interface IModel {
 	 *             the SQL exception
 	 */
 	void getLevelById(int id) throws SQLException;
+	
+	/*
+	 * get the Lorann
+	 */
 
 	IMobile getLorann();
+	
+	/*
+	 * get the Monster arraylist
+	 */
 
-	//ArrayList<Golem> getMonster();
+	ArrayList<IMobile> getMonster();
 
 }

@@ -1,5 +1,9 @@
 package controller;
 
+/*
+ * UserOrder enum
+ */
+
 public enum UserOrder {
 	/** The right. */
     RIGHT,

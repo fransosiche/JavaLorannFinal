@@ -19,7 +19,7 @@ public abstract class AbstractDAO {
      * @return the result set
      */
     protected ResultSet executeQuery(final String query) {
-        return LorannBDDConnector.getInstance().executeQuery(query);
+        return BDDConnection.getInstance().executeQuery(query);
     }
 
     /**
@@ -30,7 +30,7 @@ public abstract class AbstractDAO {
      * @return the int
      */
     protected int executeUpdate(final String query) {
-        return LorannBDDConnector.getInstance().executeUpdate(query);
+        return BDDConnection.getInstance().executeUpdate(query);
     }
 
     /**
@@ -41,6 +41,6 @@ public abstract class AbstractDAO {
      * @return the callable statement
      */
     protected CallableStatement prepareCall(final String query) {
-        return LorannBDDConnector.getInstance().prepareCall(query);
+        return BDDConnection.getInstance().prepareCall(query);
     }
 }

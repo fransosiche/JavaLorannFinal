@@ -8,9 +8,15 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 import element.Element;
-import model.dao.LorannDAO;
+import model.dao.BDDLorann;
 import motionless.MotionlessElementFactory;
 
+/**
+ * <h1>Class Map.</h1>
+ *
+ * @author group1
+ * @version 1.0
+ */
 public class Map extends Observable implements IMap {
 
 	/** The width. */
@@ -21,8 +27,11 @@ public class Map extends Observable implements IMap {
 
 	/** The on the road. */
 	private IElement[][] onTheMap;
-
-	private LorannDAO dao = new LorannDAO();
+	
+	/**
+	 * instanciate a new connection
+	 */
+	private BDDLorann dao = new BDDLorann();
 	
 
 	/**
@@ -158,7 +167,9 @@ public class Map extends Observable implements IMap {
 	public Observable getObservable() {
 		return this;
 	}
-
+	/**
+	 * get the monster arraylist
+	 */
 	@Override
 	public ArrayList<Element> getMonster() {
 		// TODO Auto-generated method stub

@@ -1,6 +1,5 @@
 package model.dao;
 
-import java.io.File;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.CallableStatement;
@@ -10,10 +9,10 @@ import java.sql.SQLException;
 /**
  * <h1>The Class ExampleDAO.</h1>
  *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Group 1
  * @version 1.0
  */
-public class LorannDAO extends AbstractDAO {
+public class BDDLorann extends AbstractDAO {
 
     /** The sql example by id. */
     private static String sqlExampleById   = "{call findMAPbyId(?)}";
@@ -29,11 +28,18 @@ public class LorannDAO extends AbstractDAO {
      * @throws SQLException
      *             the SQL exception
      */
-    
-    public LorannDAO(){
+    /**
+     * Constructor
+     */
+    public BDDLorann(){
     	super();
     }
-    
+    /**
+     * Read the map on the BDD, the prodedure
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public InputStream getLevelById(final int id) throws SQLException {
         final CallableStatement callStatement = prepareCall(sqlExampleById);
         InputStream streamMap = null;

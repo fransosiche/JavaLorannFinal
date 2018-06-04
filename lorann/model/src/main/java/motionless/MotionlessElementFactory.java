@@ -12,8 +12,11 @@ public class MotionlessElementFactory {
 	/** The Constant crystalBall. */
 	private static final CrystalBall crystalBall = new CrystalBall();
 
-	/** The Constant gate. */
+	/** The gate open. */
 	private static final Open_Door OD = new Open_Door();
+	/**
+	 * the gate closed
+	 */
 	private static final Closed_Door CD = new Closed_Door();
 
 	/** The Constant bone. */
@@ -25,17 +28,17 @@ public class MotionlessElementFactory {
 	/** The Constant verticalBone. */
 	private static final VerticalBone verticalBone = new VerticalBone();
 
-	/** The Constant purse. */
+	/** The coins 1 for map1. */
 	private static final Coins2Map1 coins2 = new Coins2Map1();
-	
+	/** The coins 2 for map1. */
 	private static final Coins1Map1 coins1 = new Coins1Map1();
-	
+	/** The coins 3 for map1. */
 	private static final Coins3Map1 coins3 = new Coins3Map1();
-	
+	/** The coins 4 for map1. */
 	private static final Coins4Map1 coins4 = new Coins4Map1();
-	
+	/** The coins 5 for map1. */
 	private static final Coins5Map1 coins5 = new Coins5Map1();
-
+	/** The constant Dirt. */
 	private static final Dirt dirt = new Dirt();
 
 	/**
@@ -62,12 +65,13 @@ public class MotionlessElementFactory {
 	public static MotionlessElement createOpenDoor() {
 		return OD;
 	}
+
 	/**
 	 * Creates a new MotionlessElements object.
 	 *
 	 * @return the motionless element
 	 */
-	
+
 	public static MotionlessElement createClosedDoor() {
 		return CD;
 	}
@@ -107,21 +111,44 @@ public class MotionlessElementFactory {
 	public static MotionlessElement createCoins1() {
 		return coins1;
 	}
+
+	/**
+	 * /** Creates a new MotionlessElements object.
+	 *
+	 * @return the motionless element
+	 */
+
 	public static MotionlessElement createCoins2() {
 		return coins2;
 	}
-	
+
+	/**
+	 * Creates a new MotionlessElements object.
+	 *
+	 * @return the motionless element
+	 */
 	public static MotionlessElement createCoins3() {
 		return coins3;
 	}
 
+	/**
+	 * Creates a new MotionlessElements object.
+	 *
+	 * @return the motionless element
+	 */
 	public static MotionlessElement createCoins4() {
 		return coins4;
 	}
-	
+
+	/**
+	 * Creates a new MotionlessElements object.
+	 *
+	 * @return the motionless element
+	 */
 	public static MotionlessElement createCoins5() {
 		return coins5;
 	}
+
 	/**
 	 * Creates a new MotionlessElements object.
 	 *
@@ -131,6 +158,11 @@ public class MotionlessElementFactory {
 		return dirt;
 	}
 
+	/**
+	 * 
+	 * @param fileSymbol
+	 * @return
+	 */
 	public static MotionlessElement getFromFileSymbol(final char fileSymbol) {
 		for (final MotionlessElement motionlessElement : motionlessElements) {
 			if (motionlessElement.getSprite().getConsoleImage() == fileSymbol) {

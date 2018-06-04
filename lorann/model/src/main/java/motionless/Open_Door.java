@@ -4,9 +4,9 @@ import model.Permeability;
 import model.Sprite;
 
 /**
- * <h1>Gate Class</h1>
+ * <h1>Open gate Class</h1>
  *
- * @author group2
+ * @author group1
  * @version 1.0
  */
 

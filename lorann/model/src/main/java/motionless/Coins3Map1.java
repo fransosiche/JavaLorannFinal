@@ -4,9 +4,9 @@ import model.Permeability;
 import model.Sprite;
 
 /**
- * <h1>Purse Class</h1>
+ * <h1>Purse Class map 1</h1>
  *
- * @author group2
+ * @author group1
  * @version 1.0
  */
 

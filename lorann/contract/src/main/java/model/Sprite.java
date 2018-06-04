@@ -10,7 +10,7 @@ import javax.imageio.ImageIO;
 /**
  * <h1>Sprite Class</h1>
  *
- * @author group2
+ * @author group1
  * @version 1.0
  */
 public class Sprite {

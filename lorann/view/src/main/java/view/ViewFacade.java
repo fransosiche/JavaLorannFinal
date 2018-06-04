@@ -16,8 +16,6 @@ import javax.swing.SwingUtilities;
 import controller.IOrderPerformer;
 import controller.UserOrder;
 import element.Element;
-import mobile.Golem;
-import mobile.Masked;
 import model.IMap;
 import model.IMobile;
 import showboard.BoardFrame;
@@ -29,25 +27,27 @@ import showboard.IPawn;
  * @author group1
  * @version 1.0
  */
-public class LorannView implements Runnable, KeyListener, ILorannView, IPawn {
+public class ViewFacade implements Runnable, KeyListener, ILorannView, IPawn {
 
 	/** The Constant length. */
 	private int squareSize = 80;
-
+	/**
+	 * the Constant rectangle/close view
+	 */
 	private Rectangle closeView;
 
-	/** The map. */
+	/** The map */
 	private IMap map;
 
-	/** Lorann. */
+	/** constant Lorann. */
 	private IMobile Lorann;
 
-	/** The order performer. */
+	/** The order performer */
 	private IOrderPerformer orderPerformer;
-
-	private ArrayList<Golem> monster;
-
-	private ArrayList<Masked> monster1;
+	/**
+	 * the monster arraylist
+	 */
+	private ArrayList<IMobile> monster;
 
 	/**
 	 * Instantiates a new insane vehicles View.
@@ -59,20 +59,17 @@ public class LorannView implements Runnable, KeyListener, ILorannView, IPawn {
 	 * @throws IOException
 	 *             Signals that an I/O exception has occurred.
 	 */
-	public LorannView(final IMap map, final IMobile Lorann, final ArrayList<Golem> monster, final ArrayList<Masked> monster1) throws IOException {
+	public ViewFacade(final IMap map, final IMobile Lorann, final ArrayList<IMobile> monster) throws IOException {
 		this.setMap(map);
 		this.setLorann(Lorann);
 		this.setMonster(monster);
-		this.setMonster1(monster1);
+
 		this.getLorann().getSprite().loadImage();
-		
-		for (Golem monster2 : monster) {
+
+		for (IMobile monster2 : monster) {
 			monster2.getSprite().loadImage();
 		}
-		for (Masked monster3 : monster1) {
-			monster3.getSprite().loadImage();
-		}
-		
+
 		this.setCloseView(new Rectangle(0, 0, this.getMap().getWidth(), this.getMap().getHeight()));
 		SwingUtilities.invokeLater(this);
 	}
@@ -103,12 +100,8 @@ public class LorannView implements Runnable, KeyListener, ILorannView, IPawn {
 
 		boardFrame.addPawn(getLorann());
 
-		for (Golem monster2 : monster) {
+		for (IMobile monster2 : monster) {
 			boardFrame.addPawn(monster2);
-		}
-
-		for (Masked monster3 : monster1) {
-			boardFrame.addPawn(monster3);
 		}
 
 		this.getMap().getObservable().addObserver(boardFrame.getObserver());
@@ -146,6 +139,9 @@ public class LorannView implements Runnable, KeyListener, ILorannView, IPawn {
 		return userOrder;
 	}
 
+	/**
+	 * method for Key Pressed
+	 */
 	public final void keyPressed(final KeyEvent keyEvent) {
 		try {
 			this.getOrderPerformer().orderPerform(keyCodeToUserOrder(keyEvent.getKeyCode()));
@@ -192,7 +188,10 @@ public class LorannView implements Runnable, KeyListener, ILorannView, IPawn {
 	private IMobile getLorann() {
 		return this.Lorann;
 	}
-
+	/**
+	 * the method to set Lorann
+	 * @param Lorann
+	 */
 	private void setLorann(final IMobile Lorann) {
 		this.Lorann = Lorann;
 	}
@@ -244,19 +243,32 @@ public class LorannView implements Runnable, KeyListener, ILorannView, IPawn {
 		// TODO Auto-generated method stub
 
 	}
-
+	/**
+	 * get the square size
+	 * @return square size
+	 */
 	public int getSquareSize() {
 		return squareSize;
 	}
-
+	/**
+	 * set the square size
+	 * @param squareSize
+	 */
 	public void setSquareSize(int squareSize) {
 		this.squareSize = squareSize;
 	}
-
+	
+	/**
+	 * get the view
+	 * @return close view
+	 */
 	public Rectangle getCloseView() {
 		return closeView;
 	}
-
+	/**
+	 * set the close view
+	 * @param closeView
+	 */
 	public void setCloseView(Rectangle closeView) {
 		this.closeView = closeView;
 	}
@@ -284,21 +296,19 @@ public class LorannView implements Runnable, KeyListener, ILorannView, IPawn {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	public ArrayList<Golem> getMonster() {
+	/**
+	 * get the arraylist monster
+	 * @return monster
+	 */
+	public ArrayList<IMobile> getMonster() {
 		return this.monster;
 	}
-
-	public void setMonster(ArrayList<Golem> monster) {
+	/**
+	 * set the monster
+	 * @param monster
+	 */
+	public void setMonster(ArrayList<IMobile> monster) {
 		this.monster = monster;
-	}
-
-	public ArrayList<Masked> getMonster1() {
-		return monster1;
-	}
-
-	public void setMonster1(ArrayList<Masked> monster1) {
-		this.monster1 = monster1;
 	}
 
 }

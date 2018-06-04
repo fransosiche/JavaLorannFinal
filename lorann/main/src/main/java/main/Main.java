@@ -6,13 +6,13 @@ import java.io.InputStreamReader;
 import java.sql.SQLException;
 
 import controller.LorannController;
-import model.LorannModel;
-import view.LorannView;
+import model.ModelFacade;
+import view.ViewFacade;
 
 /**
  * <h1>Class Main</h1>
  *
- * @author group2
+ * @author group1
  * @version 1.0
  */
 public abstract class Main {
@@ -22,11 +22,6 @@ public abstract class Main {
 
 	/** The Constant startY. */
 	private static int startY = 0;
-
-	private static int startMX = 10;
-
-	/** The Constant startY. */
-	private static int startMY = 9;
 
 	/**
 	 * The main method.
@@ -51,7 +46,7 @@ public abstract class Main {
 				int level = Integer.parseInt(levelString);
 
 				if (level > 0 && level < 6) {
-					setSpawnXY(level);
+					spawnLorann(level);
 					Start(level);
 
 				} else {
@@ -73,7 +68,12 @@ public abstract class Main {
 
 	}
 
-	public static void setSpawnXY(int level) {
+	/**
+	 * make the different spawn for Lorann
+	 * 
+	 * @param level
+	 */
+	public static void spawnLorann(int level) {
 
 		if (level == 1) {
 
@@ -103,7 +103,11 @@ public abstract class Main {
 		}
 
 	}
-
+	/**
+	 * 
+	 * @param string
+	 * @return
+	 */
 	public static boolean WholeNumber(String string) {
 		try {
 			Integer.parseInt(string);
@@ -113,18 +117,29 @@ public abstract class Main {
 
 		return false;
 	}
-
+	/**
+	 * method for the error
+	 * @throws IOException
+	 * @throws SQLException
+	 * @throws InterruptedException
+	 */
 	public static void Error() throws IOException, SQLException, InterruptedException {
 
 		System.out.println("Invalid number.");
 		main(null);
 
 	}
-
+	/**
+	 * method start
+	 * @param level
+	 * @throws IOException
+	 * @throws SQLException
+	 * @throws InterruptedException
+	 */
 	public static void Start(int level) throws IOException, SQLException, InterruptedException {
 		System.out.println("Game start!");
-		final LorannModel model = new LorannModel(level, startX, startY, startMX, startMY);
-		final LorannView view = new LorannView(model.getMap(), model.getLorann(), model.getMonster(), model.getMonster1());
+		final ModelFacade model = new ModelFacade(level, startX, startY);
+		final ViewFacade view = new ViewFacade(model.getMap(), model.getLorann(), model.getMonster());
 		final LorannController controller = new LorannController(view, model);
 		view.setOrderPerformer(controller.getOrderPeformer());
 		controller.moove();

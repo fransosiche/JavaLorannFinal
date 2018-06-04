@@ -1,10 +1,8 @@
 package controller;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
-import java.util.List;
-
+import model.IMobile;
 import model.IModel;
 import view.ILorannView;
 
@@ -12,7 +10,7 @@ import view.ILorannView;
  * <h1>The Class ControllerFacade provides a facade of the Controller
  * component.</h1>
  *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author Groupe 1
  * @version 1.0
  */
 public class LorannController implements ILorannController, IOrderPerformer {
@@ -23,10 +21,10 @@ public class LorannController implements ILorannController, IOrderPerformer {
 
 	/** The model. */
 	private IModel model;
-
+	/*
+	 * Call the enum
+	 */
 	private UserOrder stackOrder;
-
-	private static final int speedMonster = 200;
 
 	/**
 	 * Instantiates a new controller facade.
@@ -42,13 +40,19 @@ public class LorannController implements ILorannController, IOrderPerformer {
 		this.clearStackOrder();
 	}
 
-	@Override
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see controller.ILorannController#moove()
+	 */
+
 	public final void moove() throws InterruptedException, IOException {
 		while (this.getModel().getLorann().isAlive()) {
 			Thread.sleep(speed);
 			switch (this.getStackOrder()) {
 			case RIGHT:
 				this.getModel().getLorann().moveRight();
+
 				break;
 			case LEFT:
 				this.getModel().getLorann().moveLeft();
@@ -59,10 +63,7 @@ public class LorannController implements ILorannController, IOrderPerformer {
 			case DOWN:
 				this.getModel().getLorann().moveDown();
 				break;
-			/*
-			 * case SPACE: this.getModel().getLorann().magic(); // "Magic" need
-			 * rename break;
-			 */
+
 			case NOP:
 			default:
 				this.getModel().getLorann().doNothing();
@@ -74,28 +75,6 @@ public class LorannController implements ILorannController, IOrderPerformer {
 
 	}
 
-	
-	/**public final void mooveMonster() throws InterruptedException, IOException {
-		while (this.getModel().getMonster().isAlive()) {
-			Thread.sleep(speed);
-			switch (this.getStackOrder()) {
-			case RIGHT:
-				this.getModel().getLorann().moveRightM();
-				break;
-			case LEFT:
-				this.getModel().getLorann().moveLeftM();
-				break;
-			case UP:
-				this.getModel().getLorann().moveUpM();
-				break;
-			case DOWN:
-				this.getModel().getLorann().moveDownM();
-				break;
-				
-			}
-		}
-	}
-	**/
 	/**
 	 * Gets the view.
 	 *
@@ -105,11 +84,19 @@ public class LorannController implements ILorannController, IOrderPerformer {
 		return this.view;
 	}
 
-	@Override
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see controller.IOrderPerformer#orderPerform(controller.UserOrder)
+	 */
 	public final void orderPerform(final UserOrder userOrder) throws IOException {
 		this.setStackOrder(userOrder);
 	}
 
+	/*
+	 * set the view
+	 * 
+	 */
 	private void setView(final ILorannView view) {
 		this.view = view;
 	}
@@ -123,6 +110,10 @@ public class LorannController implements ILorannController, IOrderPerformer {
 		return this.model;
 	}
 
+	/*
+	 * Set the model.
+	 * 
+	 */
 	private void setModel(final IModel model) {
 		this.model = model;
 	}
@@ -153,7 +144,11 @@ public class LorannController implements ILorannController, IOrderPerformer {
 		this.stackOrder = UserOrder.NOP;
 	}
 
-	@Override
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see controller.ILorannController#getOrderPeformer()
+	 */
 	public IOrderPerformer getOrderPeformer() {
 		return this;
 	}

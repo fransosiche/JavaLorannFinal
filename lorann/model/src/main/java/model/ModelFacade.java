@@ -8,23 +8,20 @@ import mobile.Lorann;
 import mobile.Masked;
 import mobile.Golem;
 
-public class LorannModel implements IModel {
+public class ModelFacade implements IModel {
 
 	private IMap map;
 
 	private IMobile lorann;
 
-	private ArrayList<Golem> monster = new ArrayList<Golem>();
+	private ArrayList<IMobile> monster = new ArrayList<IMobile>();
 
-	private ArrayList<Masked> monster1 = new ArrayList<Masked>();
-
-	public LorannModel(final int level, final int lorannX, final int lorannY, final int monsterX, final int monsterY)
-			throws IOException, SQLException {
+	public ModelFacade(final int level, final int lorannX, final int lorannY) throws IOException, SQLException {
 		this.setMap(new Map(level));
 		this.setLorann(new Lorann(lorannX, lorannY, this.getMap()));
 
 		this.getMonster().add(new Golem(10, 8, map, Permeability.MONSTER));
-		this.getMonster1().add(new Masked(5, 5, map, Permeability.MONSTER));
+		this.getMonster().add(new Masked(5, 5, map, Permeability.MONSTER));
 
 	}
 
@@ -49,19 +46,11 @@ public class LorannModel implements IModel {
 		this.map = map;
 	}
 
-	public ArrayList<Masked> getMonster1() {
-		return monster1;
-	}
-
-	public void setMonster1(ArrayList<Masked> monster1) {
-		this.monster1 = monster1;
-	}
-
-	public ArrayList<Golem> getMonster() {
+	public ArrayList<IMobile> getMonster() {
 		return monster;
 	}
 
-	public void setMonster(ArrayList<Golem> monster) {
+	public void setMonster(ArrayList<IMobile> monster) {
 		this.monster = monster;
 	}
 }

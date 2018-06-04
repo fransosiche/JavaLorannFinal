@@ -12,10 +12,10 @@ import java.sql.Statement;
  * @author Jean-Aymeric DIET jadiet@cesi.fr
  * @version 1.0
  */
-public final class LorannBDDConnector extends AbstractDAO {
+public final class BDDConnection extends AbstractDAO {
 
     /** The instance. */
-    private static LorannBDDConnector instance;
+    private static BDDConnection instance;
 
     /** The login. */
     private static String                  user     = "root";
@@ -35,7 +35,7 @@ public final class LorannBDDConnector extends AbstractDAO {
     /**
      * Instantiates a new boulder dash BDD connector.
      */
-    public LorannBDDConnector() {
+    public BDDConnection() {
         this.open();
     }
 
@@ -44,9 +44,9 @@ public final class LorannBDDConnector extends AbstractDAO {
      *
      * @return single instance of BoulderDashBDDConnector
      */
-    public static LorannBDDConnector getInstance() {
+    public static BDDConnection getInstance() {
         if (instance == null) {
-            setInstance(new LorannBDDConnector());
+            setInstance(new BDDConnection());
         }
         return instance;
     }
@@ -57,8 +57,8 @@ public final class LorannBDDConnector extends AbstractDAO {
      * @param instance
      *            the new instance
      */
-    private static void setInstance(final LorannBDDConnector instance) {
-        LorannBDDConnector.instance = instance;
+    private static void setInstance(final BDDConnection instance) {
+        BDDConnection.instance = instance;
     }
 
     /**
@@ -68,8 +68,8 @@ public final class LorannBDDConnector extends AbstractDAO {
      */
     private boolean open() {
         try {
-            this.connection = DriverManager.getConnection(LorannBDDConnector.url, LorannBDDConnector.user,
-                    LorannBDDConnector.password);
+            this.connection = DriverManager.getConnection(BDDConnection.url, BDDConnection.user,
+                    BDDConnection.password);
             this.statement = this.connection.createStatement();
             return true;
         } catch (final SQLException exception) {
