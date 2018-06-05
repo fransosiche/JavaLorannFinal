@@ -108,14 +108,12 @@ public abstract class Mobile extends Element implements IMobile {
 
 			die();
 
-		} else if ((Model.getMonster().get(0).getPosition().equals(new Point(this.getX() - 1, this.getY())))) {
-			die();
-		} else if ((Model.getMonster().get(1).getPosition().equals(new Point(this.getX() - 1, this.getY())))) {
-			die();
-		} else if ((Model.getMonster().get(2).getPosition().equals(new Point(this.getX() - 1, this.getY())))) {
-			die();
 		}
 	}
+
+
+
+	
 
 	/**
 	 * Method to moove left
@@ -144,12 +142,6 @@ public abstract class Mobile extends Element implements IMobile {
 
 				die();
 
-			} else if ((Model.getMonster().get(0).getPosition() == (new Point(this.getX() - 1, this.getY())))) {
-				die();
-			} else if ((Model.getMonster().get(1).getPosition().equals(new Point(this.getX() - 1, this.getY())))) {
-				die();
-			} else if ((Model.getMonster().get(2).getPosition().equals(new Point(this.getX() - 1, this.getY())))) {
-				die();
 			}
 		}
 	}
@@ -178,14 +170,9 @@ public abstract class Mobile extends Element implements IMobile {
 
 				die();
 
-			} else if ((Model.getMonster().get(0).getPosition().equals(new Point(this.getX(), this.getY() + 1)))) {
-				die();
-			} else if ((Model.getMonster().get(1).getPosition().equals(new Point(this.getX(), this.getY() + 1)))) {
-				die();
-			} else if ((Model.getMonster().get(2).getPosition().equals(new Point(this.getX(), this.getY() + 1)))) {
-				die();
 			}
 		}
+
 	}
 
 	/**
@@ -211,12 +198,6 @@ public abstract class Mobile extends Element implements IMobile {
 					.getPermeability() == Permeability.MONSTER) {
 				die();
 
-			} else if ((Model.getMonster().get(0).getPosition().equals(new Point(this.getX() + 1, this.getY())))) {
-				die();
-			} else if ((Model.getMonster().get(1).getPosition().equals(new Point(this.getX() + 1, this.getY())))) {
-				die();
-			} else if ((Model.getMonster().get(2).getPosition().equals(new Point(this.getX() + 1, this.getY())))) {
-				die();
 			}
 		}
 	}
@@ -230,9 +211,6 @@ public abstract class Mobile extends Element implements IMobile {
 
 				this.setHasMoved();
 
-			} else if (Model.getLorann().getPosition().equals(new Point(this.getX() + 1, this.getY()))) {
-
-				die();
 			}
 		}
 
@@ -247,9 +225,6 @@ public abstract class Mobile extends Element implements IMobile {
 				this.setHasMoved();
 			}
 
-			else if (Model.getLorann().getPosition().equals(new Point(this.getX(), this.getY() + 1))) {
-				die();
-			}
 		}
 
 	}
@@ -262,8 +237,6 @@ public abstract class Mobile extends Element implements IMobile {
 				this.setX(this.getX() - 1);
 				this.setHasMoved();
 
-			} else if (Model.getLorann().getPosition().equals(new Point(this.getX() - 1, this.getY()))) {
-				die();
 			}
 		}
 	}
@@ -277,8 +250,6 @@ public abstract class Mobile extends Element implements IMobile {
 				this.setHasMoved();
 
 			}
-		} else if (Model.getLorann().getPosition().equals(new Point(this.getX(), this.getY() - 1))) {
-			die();
 		}
 	}
 
