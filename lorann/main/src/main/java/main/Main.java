@@ -147,6 +147,7 @@ public abstract class Main {
 		final ViewFacade view = new ViewFacade(model.getMap(), model.getLorann(), model.getMonster());
 		final LorannController controller = new LorannController(view, model);
 		view.setOrderPerformer(controller.getOrderPeformer());
+		controller.mooveAI();
 		controller.moove();
 	}
 

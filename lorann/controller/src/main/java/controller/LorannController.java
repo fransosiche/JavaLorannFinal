@@ -17,9 +17,9 @@ import view.ILorannView;
  */
 public class LorannController implements ILorannController, IOrderPerformer {
 
-	private static final int speed = 200;
+	private static final int speed = 50;
 
-	private static int speed1 = 100;
+	private static final int speed1 = 400;
 
 	/** The view. */
 	private ILorannView view;
@@ -77,16 +77,23 @@ public class LorannController implements ILorannController, IOrderPerformer {
 		}
 	}
 
-	public void randomv3() throws IOException {
-		int G = (int) (Math.random() * (4 - 0));
-		if (G == 0) {
-			this.getModel().getMonster().get(3).moveDownM();
-		} else if (G == 1) {
-			this.getModel().getMonster().get(3).moveUpM();
-		} else if (G == 2) {
-			this.getModel().getMonster().get(3).moveLeftM();
-		} else if (G == 3) {
-			this.getModel().getMonster().get(3).moveRightM();
+	public void follow() throws IOException {
+		if (this.getModel().getLorann().getX() != this.getModel().getMonster().get(3).getX()
+				&& this.getModel().getLorann().getY() != this.getModel().getMonster().get(3).getY()) {
+
+			if (this.getModel().getLorann().getX() > this.getModel().getMonster().get(3).getX()) {
+				this.getModel().getMonster().get(3).moveRightM();
+			} else if (this.getModel().getLorann().getX() < this.getModel().getMonster().get(3).getX()) {
+				this.getModel().getMonster().get(3).moveLeftM();
+			}
+
+			if (this.getModel().getLorann().getY() > this.getModel().getMonster().get(3).getY()) {
+				this.getModel().getMonster().get(3).moveDownM();
+
+			} else if (this.getModel().getLorann().getY() < this.getModel().getMonster().get(3).getY()) {
+				this.getModel().getMonster().get(3).moveUpM();
+			}
+
 		}
 	}
 	/*
@@ -102,100 +109,103 @@ public class LorannController implements ILorannController, IOrderPerformer {
 			case RIGHT:
 				this.getModel().getLorann().moveRight();
 
-				this.getModel().getMonster().get(0).moveRightM();
-				random();
-				randomv2();
-				randomv3();
-
 				break;
 			case LEFT:
 				this.getModel().getLorann().moveLeft();
-
-				this.getModel().getMonster().get(0).moveLeftM();
-				random();
-				randomv2();
-				randomv3();
 
 				break;
 			case UP:
 				this.getModel().getLorann().moveUp();
 
-				this.getModel().getMonster().get(0).moveUpM();
-				random();
-				randomv2();
-				randomv3();
-
 				break;
 			case DOWN:
 				this.getModel().getLorann().moveDown();
-				this.getModel().getMonster().get(0).moveDownM();
-				random();
-				randomv2();
-				randomv3();
 
 				break;
 
 			case NOP:
 			default:
 				this.getModel().getLorann().doNothing();
-				random();
 
 				break;
 			}
 			this.clearStackOrder();
-			for (IMobile issou : this.getModel().getMonster()) {
 
-				if (this.getModel().getLorann().getX() == issou.getX()
-						&& this.getModel().getLorann().getY() == issou.getY()
-						&& issou.getPermeability() == Permeability.MONSTER) {
-					this.getModel().getLorann().isCrashed();
-					this.getModel().getLorann().die();
+		}
+	}
+
+	public final void mooveAI() throws InterruptedException, IOException {
+		Thread t = new Thread(new Runnable() {
+
+			@Override
+			public void run() {
+				while (getModel().getLorann().isAlive()) {
+					try {
+						Thread.sleep(speed1);
+
+						switch (getStackOrder()) {
+						case RIGHT:
+
+							getModel().getMonster().get(0).moveRightM();
+							random();
+							randomv2();
+							follow();
+
+							break;
+						case LEFT:
+
+							getModel().getMonster().get(0).moveLeftM();
+							random();
+							randomv2();
+							follow();
+
+							break;
+						case UP:
+
+							getModel().getMonster().get(0).moveUpM();
+							random();
+							randomv2();
+							follow();
+
+							break;
+						case DOWN:
+
+							getModel().getMonster().get(0).moveDownM();
+							random();
+							randomv2();
+							follow();
+
+							break;
+
+						case NOP:
+						default:
+
+							random();
+							randomv2();
+							follow();
+
+							break;
+						}
+						clearStackOrder();
+						for (IMobile issou : getModel().getMonster()) {
+
+							if (getModel().getLorann().getX() == issou.getX()
+									&& getModel().getLorann().getY() == issou.getY()
+									&& issou.getPermeability() == Permeability.MONSTER) {
+								getModel().getLorann().isCrashed();
+								getModel().getLorann().die();
+							}
+
+						}
+					} catch (InterruptedException | IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+
 				}
-
 			}
-		}
-	}
-
-	public final void moove2() throws InterruptedException, IOException {
-		while (this.getModel().getLorann().isAlive()) {
-			Thread.sleep(speed1);
-			switch (this.getStackOrder()) {
-			case RIGHT:
-
-				randomv2();
-				randomv3();
-
-				break;
-			case LEFT:
-
-				randomv2();
-				randomv3();
-
-				break;
-			case UP:
-
-				randomv2();
-				randomv3();
-
-				break;
-			case DOWN:
-
-				randomv2();
-				randomv3();
-
-				break;
-
-			case NOP:
-			default:
-
-				randomv2();
-				randomv3();
-				break;
-			}
-			this.clearStackOrder();
-
-		}
-
+		});
+		t.start();
 	}
 
 	/**
