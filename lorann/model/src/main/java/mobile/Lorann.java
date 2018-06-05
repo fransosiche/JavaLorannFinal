@@ -3,6 +3,7 @@ package mobile;
 import java.io.IOException;
 
 import model.IMap;
+import model.ModelFacade;
 import model.Permeability;
 import model.Sprite;
 
@@ -12,6 +13,7 @@ import model.Sprite;
  * @author group1
  * @version 1.0
  */
+
 public class Lorann extends Mobile {
 
 	/** The Constant SpriteUL */
@@ -38,6 +40,8 @@ public class Lorann extends Mobile {
 	/** The Constant spriteTurnDown. */
 	private static final Sprite spriteTurnDown = new Sprite('c', "lorann_b.png");
 
+	public int Picture;
+
 	/**
 	 * Constructor of Lorann to load the sprite
 	 * 
@@ -46,8 +50,8 @@ public class Lorann extends Mobile {
 	 * @param map
 	 * @throws IOException
 	 */
-	public Lorann(final int x, final int y, IMap map) throws IOException {
-		super(x, y, spriteUL, map, Permeability.BLOCKING);
+	public Lorann(final int x, final int y, IMap map, ModelFacade Model) throws IOException {
+		super(x, y, spriteUL, map, Permeability.BLOCKING, Model);
 		spriteUL.loadImage();
 		spriteUR.loadImage();
 		spriteBR.loadImage();
@@ -60,6 +64,7 @@ public class Lorann extends Mobile {
 
 	/**
 	 * Method Moveup
+	 * 
 	 * @throws IOException
 	 */
 	public void moveUp() throws IOException {
@@ -69,6 +74,7 @@ public class Lorann extends Mobile {
 
 	/**
 	 * method MoveLeft
+	 * 
 	 * @throws IOException
 	 */
 	public void moveLeft() throws IOException {
@@ -78,12 +84,14 @@ public class Lorann extends Mobile {
 
 	/**
 	 * method MoveDown
+	 * 
 	 * @throws IOException
 	 */
 	public void moveDown() throws IOException {
 		super.moveDown();
 		this.setSprite(spriteTurnDown);
 	}
+
 	/**
 	 * Method Move Right
 	 * 
@@ -93,10 +101,29 @@ public class Lorann extends Mobile {
 		super.moveRight();
 		this.setSprite(spriteTurnRight);
 	}
+
 	/**
 	 * method do nothing
 	 */
 	public void doNothing() {
+
+		switch (Picture) {
+		case 0:
+			this.setSprite(spriteBL);
+			break;
+		case 1:
+			this.setSprite(spriteBR);
+		case 2:
+			this.setSprite(spriteUL);
+			break;
+		case 3:
+			this.setSprite(spriteUR);
+			break;
+		}
+		this.Picture++;
+		if (Picture > 3) {
+			Picture = 0;
+		}
 
 	}
 

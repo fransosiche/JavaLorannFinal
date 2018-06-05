@@ -3,6 +3,7 @@ package mobile;
 import java.io.IOException;
 
 import model.IMap;
+import model.ModelFacade;
 import model.Permeability;
 import model.Sprite;
 import showboard.IPawn;
@@ -20,18 +21,14 @@ public class Golem extends Mobile implements IPawn {
 
 	/**
 	 * Contructor
-	 * 
 	 * @param px
 	 * @param py
 	 * @param map
-	 * @param permeability
 	 * @throws IOException
 	 */
-	public Golem(int px, int py, IMap map, Permeability permeability) throws IOException {
-		super(px, py, sprite1, map, Permeability.MONSTER);
+	public Golem(int px, int py, IMap map, Permeability permeability, ModelFacade Model) throws IOException {
+		super(px, py, sprite1, map, Permeability.MONSTER, Model);
 		sprite1.loadImage();
-
-		// TODO Auto-generated constructor stub
 
 	}
 

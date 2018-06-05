@@ -2,13 +2,13 @@ package mobile;
 
 import java.awt.Point;
 import java.io.IOException;
-import java.util.Random;
 
 import javax.swing.JOptionPane;
 
 import element.Element;
 import model.IMap;
 import model.IMobile;
+import model.ModelFacade;
 import model.Permeability;
 import model.Sprite;
 import showboard.IBoard;
@@ -35,10 +35,9 @@ public abstract class Mobile extends Element implements IMobile {
 	/** The board. */
 	private IBoard board;
 
-	private int score = 0;
+	private ModelFacade Model;
 
-	private int PX;
-	private int PY;
+	private int score = 0;
 
 	/**
 	 * Instantiates a new mobile.
@@ -50,10 +49,12 @@ public abstract class Mobile extends Element implements IMobile {
 	 * @param permeability
 	 *            the permeability
 	 */
-	Mobile(final Sprite sprite, final IMap map, final Permeability permeability) {
+	Mobile(final Sprite sprite, final IMap map, final Permeability permeability, ModelFacade Model) {
 		super(sprite, permeability);
 		this.setMap(map);
 		this.position = new Point();
+		this.Model = Model;
+
 	}
 
 	/**
@@ -70,10 +71,12 @@ public abstract class Mobile extends Element implements IMobile {
 	 * @param permeability
 	 *            the permeability
 	 */
-	Mobile(final int x, final int y, final Sprite sprite, final IMap map, final Permeability permeability) {
-		this(sprite, map, permeability);
+	Mobile(final int x, final int y, final Sprite sprite, final IMap map, final Permeability permeability,
+			ModelFacade Model) {
+		this(sprite, map, permeability, Model);
 		this.setX(x);
 		this.setY(y);
+
 	}
 
 	/**
@@ -88,27 +91,29 @@ public abstract class Mobile extends Element implements IMobile {
 				this.setHasMoved();
 			}
 			if (this.getY() != 0) {
-				try {
-					if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1)
-							.getPermeability() == Permeability.OPENGATE) {
-						this.ImmobilhasChanged(getX(), getY() - 1);
-					}
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+
+				if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1)
+						.getPermeability() == Permeability.OPENGATE) {
+					this.ImmobilhasChanged(getX(), getY() - 1);
 				}
-			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1)
-					.getPermeability() == Permeability.COINS) {
-				this.CoinsHasbeenTaken(this.getX(), this.getY() - 1);
-			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1)
-					.getPermeability() == Permeability.WIN) {
-				GGWP();
 
-			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1)
-					.getPermeability() == Permeability.MONSTER) {
-				die();
 			}
+		} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1).getPermeability() == Permeability.COINS) {
+			this.CoinsHasbeenTaken(this.getX(), this.getY() - 1);
+		} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1).getPermeability() == Permeability.WIN) {
+			this.GGWP(this.getX(), this.getY() - 1);
 
+		} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() - 1)
+				.getPermeability() == Permeability.MONSTER) {
+
+			die();
+
+		} else if ((Model.getMonster().get(0).getPosition().equals(new Point(this.getX() - 1, this.getY())))) {
+			die();
+		} else if ((Model.getMonster().get(1).getPosition().equals(new Point(this.getX() - 1, this.getY())))) {
+			die();
+		} else if ((Model.getMonster().get(2).getPosition().equals(new Point(this.getX() - 1, this.getY())))) {
+			die();
 		}
 	}
 
@@ -132,12 +137,19 @@ public abstract class Mobile extends Element implements IMobile {
 				this.CoinsHasbeenTaken(this.getX() - 1, this.getY());
 			} else if (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY())
 					.getPermeability() == Permeability.WIN) {
-				GGWP();
+				this.GGWP(this.getX() - 1, this.getY());
 
 			} else if (this.getMap().getOnTheMapXY(this.getX() - 1, this.getY())
 					.getPermeability() == Permeability.MONSTER) {
+
 				die();
 
+			} else if ((Model.getMonster().get(0).getPosition().equals(new Point(this.getX() - 1, this.getY())))) {
+				die();
+			} else if ((Model.getMonster().get(1).getPosition().equals(new Point(this.getX() - 1, this.getY())))) {
+				die();
+			} else if ((Model.getMonster().get(2).getPosition().equals(new Point(this.getX() - 1, this.getY())))) {
+				die();
 			}
 		}
 	}
@@ -160,12 +172,18 @@ public abstract class Mobile extends Element implements IMobile {
 				this.CoinsHasbeenTaken(this.getX(), this.getY() + 1);
 			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1)
 					.getPermeability() == Permeability.WIN) {
-				GGWP();
-
+				this.GGWP(this.getX(), this.getY() + 1);
 			} else if (this.getMap().getOnTheMapXY(this.getX(), this.getY() + 1)
 					.getPermeability() == Permeability.MONSTER) {
+
 				die();
 
+			} else if ((Model.getMonster().get(0).getPosition().equals(new Point(this.getX(), this.getY() + 1)))) {
+				die();
+			} else if ((Model.getMonster().get(1).getPosition().equals(new Point(this.getX(), this.getY() + 1)))) {
+				die();
+			} else if ((Model.getMonster().get(2).getPosition().equals(new Point(this.getX(), this.getY() + 1)))) {
+				die();
 			}
 		}
 	}
@@ -188,11 +206,17 @@ public abstract class Mobile extends Element implements IMobile {
 				this.CoinsHasbeenTaken(this.getX() + 1, this.getY());
 			} else if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY())
 					.getPermeability() == Permeability.WIN) {
-				GGWP();
+				GGWP(this.getX() + 1, this.getY());
 			} else if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY())
 					.getPermeability() == Permeability.MONSTER) {
 				die();
 
+			} else if ((Model.getMonster().get(0).getPosition().equals(new Point(this.getX() + 1, this.getY())))) {
+				die();
+			} else if ((Model.getMonster().get(1).getPosition().equals(new Point(this.getX() + 1, this.getY())))) {
+				die();
+			} else if ((Model.getMonster().get(2).getPosition().equals(new Point(this.getX() + 1, this.getY())))) {
+				die();
 			}
 		}
 	}
@@ -204,8 +228,12 @@ public abstract class Mobile extends Element implements IMobile {
 					.getPermeability() == Permeability.PENETRABLE) {
 				this.setX(this.getX() + 1);
 				this.setHasMoved();
+
+			} else if (Model.getLorann().getPosition().equals(new Point(this.getX() + 1, this.getY()))) {
+				die();
 			}
 		}
+
 	}
 
 	public void moveDownM() throws IOException {
@@ -216,7 +244,12 @@ public abstract class Mobile extends Element implements IMobile {
 				this.setY(this.getY() + 1);
 				this.setHasMoved();
 			}
+
+			else if (Model.getLorann().getPosition().equals(new Point(this.getX(), this.getY() + 1))) {
+				die();
+			}
 		}
+
 	}
 
 	public void moveLeftM() throws IOException {
@@ -227,6 +260,8 @@ public abstract class Mobile extends Element implements IMobile {
 				this.setX(this.getX() - 1);
 				this.setHasMoved();
 
+			} else if (Model.getLorann().getPosition().equals(new Point(this.getX() - 1, this.getY()))) {
+				die();
 			}
 		}
 	}
@@ -238,17 +273,12 @@ public abstract class Mobile extends Element implements IMobile {
 					.getPermeability() == Permeability.PENETRABLE) {
 				this.setY(this.getY() - 1);
 				this.setHasMoved();
+
 			}
+		} else if (Model.getLorann().getPosition().equals(new Point(this.getX(), this.getY() - 1))) {
+			die();
 		}
 	}
-
-	/*
-	 * public void moveLock() throws IOException { while
-	 * (this.getMap().getOnTheMapXY(this.getX(), this.getY()) !=
-	 * this.getMap().getOnTheMapXY(this.getPX(), this.getPY())) { if (getX() <
-	 * getPX()) { moveDownM(); } if (getX() > getPX()) { moveUpM(); } if (getY()
-	 * < getPY()) { moveLeftM(); } if (getY() < getPY()) { moveRightM(); } } }
-	 */
 
 	/**
 	 * Method donothing
@@ -350,7 +380,7 @@ public abstract class Mobile extends Element implements IMobile {
 	public void die() {
 		this.alive = false;
 		this.setHasMoved();
-		JOptionPane.showMessageDialog(null, "You loose");
+		JOptionPane.showMessageDialog(null, "You loose " + getScore());
 		System.exit(0);
 
 	}
@@ -372,9 +402,9 @@ public abstract class Mobile extends Element implements IMobile {
 	/**
 	 * method GGWP if u manage to win the game
 	 */
-	public void GGWP() {
-		JOptionPane.showMessageDialog(null, "You Win, your score is");
-		JOptionPane.showMessageDialog(null, getScore());
+	public void GGWP(int x, int y) {
+		JOptionPane.showMessageDialog(null, "You Win, your score is " + getScore());
+
 		System.exit(0);
 	}
 
@@ -471,6 +501,14 @@ public abstract class Mobile extends Element implements IMobile {
 	 */
 	protected IBoard getBoard() {
 		return this.board;
+	}
+
+	public ModelFacade getModel() {
+		return Model;
+	}
+
+	public void setModel(ModelFacade model) {
+		Model = model;
 	}
 
 }

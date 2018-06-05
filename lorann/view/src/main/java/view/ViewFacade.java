@@ -188,8 +188,10 @@ public class ViewFacade implements Runnable, KeyListener, ILorannView, IPawn {
 	private IMobile getLorann() {
 		return this.Lorann;
 	}
+
 	/**
 	 * the method to set Lorann
+	 * 
 	 * @param Lorann
 	 */
 	private void setLorann(final IMobile Lorann) {
@@ -243,30 +245,37 @@ public class ViewFacade implements Runnable, KeyListener, ILorannView, IPawn {
 		// TODO Auto-generated method stub
 
 	}
+
 	/**
 	 * get the square size
+	 * 
 	 * @return square size
 	 */
 	public int getSquareSize() {
 		return squareSize;
 	}
+
 	/**
 	 * set the square size
+	 * 
 	 * @param squareSize
 	 */
 	public void setSquareSize(int squareSize) {
 		this.squareSize = squareSize;
 	}
-	
+
 	/**
 	 * get the view
+	 * 
 	 * @return close view
 	 */
 	public Rectangle getCloseView() {
 		return closeView;
 	}
+
 	/**
 	 * set the close view
+	 * 
 	 * @param closeView
 	 */
 	public void setCloseView(Rectangle closeView) {
@@ -296,15 +305,19 @@ public class ViewFacade implements Runnable, KeyListener, ILorannView, IPawn {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	/**
 	 * get the arraylist monster
+	 * 
 	 * @return monster
 	 */
 	public ArrayList<IMobile> getMonster() {
 		return this.monster;
 	}
+
 	/**
 	 * set the monster
+	 * 
 	 * @param monster
 	 */
 	public void setMonster(ArrayList<IMobile> monster) {

@@ -20,11 +20,11 @@ public class ModelFacade implements IModel {
 
 	public ModelFacade(final int level, final int lorannX, final int lorannY) throws IOException, SQLException {
 		this.setMap(new Map(level));
-		this.setLorann(new Lorann(lorannX, lorannY, this.getMap()));
-		this.getMonster().add(new Golem(10, 5, map, Permeability.MONSTER));
-		this.getMonster().add(new Masked(5, 5, map, Permeability.MONSTER));
-		this.getMonster().add(new Zombie(4, 7, map, Permeability.MONSTER));
-		this.getMonster().add(new Pauline(15, 6, map, Permeability.MONSTER));
+		this.setLorann(new Lorann(lorannX, lorannY, this.getMap(),this));
+		this.getMonster().add(new Golem(7, 2, map, Permeability.MONSTER,this));
+		this.getMonster().add(new Masked(2, 6, map,Permeability.MONSTER,this));
+		this.getMonster().add(new Pauline(16, 7, map,Permeability.MONSTER ,this));
+		this.getMonster().add(new Zombie(6, 10, map,Permeability.MONSTER,this));
 	}
 
 	@Override
@@ -49,7 +49,8 @@ public class ModelFacade implements IModel {
 	}
 
 	public ArrayList<IMobile> getMonster() {
-		return monster;
+		// TODO Auto-generated method stub
+		return this.monster;
 	}
 
 	public void setMonster(ArrayList<IMobile> monster) {

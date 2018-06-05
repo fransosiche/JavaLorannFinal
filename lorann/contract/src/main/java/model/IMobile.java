@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Point;
 import java.io.IOException;
 
 import showboard.IPawn;
@@ -77,6 +78,12 @@ public interface IMobile extends IPawn, IElement {
 	int getPX();
 
 	int getPY();
+	
+	@Override
+	default Point getPosition() {
+		// TODO Auto-generated method stub
+		return new Point(getX(), getY());
+	}
 
 	/**
 	 * Checks if is alive.

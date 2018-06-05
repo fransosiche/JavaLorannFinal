@@ -59,6 +59,7 @@ public class LorannController implements ILorannController, IOrderPerformer {
 			this.getModel().getMonster().get(1).moveRightM();
 		}
 	}
+
 	public void randomv2() throws IOException {
 		int W = (int) (Math.random() * (4 - 0));
 		if (W == 0) {
@@ -71,7 +72,7 @@ public class LorannController implements ILorannController, IOrderPerformer {
 			this.getModel().getMonster().get(2).moveRightM();
 		}
 	}
-	
+
 	public void randomv3() throws IOException {
 		int G = (int) (Math.random() * (4 - 0));
 		if (G == 0) {
@@ -99,6 +100,8 @@ public class LorannController implements ILorannController, IOrderPerformer {
 
 				this.getModel().getMonster().get(0).moveRightM();
 				random();
+				randomv2();
+				randomv3();
 
 				break;
 			case LEFT:
@@ -106,6 +109,8 @@ public class LorannController implements ILorannController, IOrderPerformer {
 
 				this.getModel().getMonster().get(0).moveLeftM();
 				random();
+				randomv2();
+				randomv3();
 
 				break;
 			case UP:
@@ -113,22 +118,24 @@ public class LorannController implements ILorannController, IOrderPerformer {
 
 				this.getModel().getMonster().get(0).moveUpM();
 				random();
+				randomv2();
+				randomv3();
 
 				break;
 			case DOWN:
 				this.getModel().getLorann().moveDown();
 				this.getModel().getMonster().get(0).moveDownM();
 				random();
+				randomv2();
+				randomv3();
 
 				break;
 
 			case NOP:
 			default:
-
 				this.getModel().getLorann().doNothing();
 				random();
-				//this.getModel().getMonster().get(3).moveLock();
-				//randomv2();
+				randomv2();
 				randomv3();
 				break;
 			}

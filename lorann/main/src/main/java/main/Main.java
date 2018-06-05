@@ -134,7 +134,7 @@ public abstract class Main {
 	 * @param level
 	 * @throws IOException
 	 * @throws SQLException
-	 * @throws InterruptedException
+	 * @throws InterruptedException:
 	 */
 	public static void Start(int level) throws IOException, SQLException, InterruptedException {
 		System.out.println("Game start!");

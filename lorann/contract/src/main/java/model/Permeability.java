@@ -11,23 +11,26 @@ public enum Permeability {
 	/** The blocking. */
 	BLOCKING,
 	/** The penetrable. */
-	PENETRABLE, 
+	PENETRABLE,
+
 	/*
 	 * the state Monster
 	 */
-	MONSTER, 
-	/*the state Coins
+	MONSTER,
+	/*
+	 * the state Coins
 	 * 
 	 */
 	COINS,
-	/* the state Opengate
+	/*
+	 * the state Opengate
 	 * 
 	 */
 
-	OPENGATE, 
+	OPENGATE,
 	/*
-	Dead
-	*/
+	 * Dead
+	 */
 	DEAD,
 	/*
 	 * Win
