@@ -34,7 +34,7 @@ public abstract class Main {
 	 */
 	public static void main(final String[] args) throws IOException, SQLException, InterruptedException {
 
-		System.out.println("Enter level (1-5) : ");
+		System.out.println("Choose a level plz (between 1 & 5) : ");
 
 		try {
 
@@ -103,6 +103,7 @@ public abstract class Main {
 		}
 
 	}
+
 	/**
 	 * 
 	 * @param string
@@ -117,8 +118,10 @@ public abstract class Main {
 
 		return false;
 	}
+
 	/**
 	 * method for the error
+	 * 
 	 * @throws IOException
 	 * @throws SQLException
 	 * @throws InterruptedException
@@ -129,8 +132,10 @@ public abstract class Main {
 		main(null);
 
 	}
+
 	/**
 	 * method start
+	 * 
 	 * @param level
 	 * @throws IOException
 	 * @throws SQLException

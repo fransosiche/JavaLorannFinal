@@ -144,7 +144,7 @@ public abstract class Mobile extends Element implements IMobile {
 
 				die();
 
-			} else if ((Model.getMonster().get(0).getPosition().equals(new Point(this.getX() - 1, this.getY())))) {
+			} else if ((Model.getMonster().get(0).getPosition() == (new Point(this.getX() - 1, this.getY())))) {
 				die();
 			} else if ((Model.getMonster().get(1).getPosition().equals(new Point(this.getX() - 1, this.getY())))) {
 				die();
@@ -227,9 +227,11 @@ public abstract class Mobile extends Element implements IMobile {
 			if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY())
 					.getPermeability() == Permeability.PENETRABLE) {
 				this.setX(this.getX() + 1);
+				
 				this.setHasMoved();
 
 			} else if (Model.getLorann().getPosition().equals(new Point(this.getX() + 1, this.getY()))) {
+				System.out.println("slt");
 				die();
 			}
 		}
@@ -380,7 +382,7 @@ public abstract class Mobile extends Element implements IMobile {
 	public void die() {
 		this.alive = false;
 		this.setHasMoved();
-		JOptionPane.showMessageDialog(null, "You loose " + getScore());
+		JOptionPane.showMessageDialog(null, "You loose, your score : " + getScore());
 		System.exit(0);
 
 	}
