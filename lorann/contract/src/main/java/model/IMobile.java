@@ -78,12 +78,14 @@ public interface IMobile extends IPawn, IElement {
 	int getPX();
 
 	int getPY();
-	
+
 	@Override
 	default Point getPosition() {
 		// TODO Auto-generated method stub
 		return new Point(getX(), getY());
 	}
+
+	void die();
 
 	/**
 	 * Checks if is alive.

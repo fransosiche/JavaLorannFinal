@@ -5,6 +5,7 @@ import java.util.Random;
 
 import model.IMobile;
 import model.IModel;
+import model.Permeability;
 import view.ILorannView;
 
 /**
@@ -17,6 +18,9 @@ import view.ILorannView;
 public class LorannController implements ILorannController, IOrderPerformer {
 
 	private static final int speed = 200;
+
+	private static int speed1 = 100;
+
 	/** The view. */
 	private ILorannView view;
 
@@ -135,6 +139,55 @@ public class LorannController implements ILorannController, IOrderPerformer {
 			default:
 				this.getModel().getLorann().doNothing();
 				random();
+
+				break;
+			}
+			this.clearStackOrder();
+			for (IMobile issou : this.getModel().getMonster()) {
+
+				if (this.getModel().getLorann().getX() == issou.getX()
+						&& this.getModel().getLorann().getY() == issou.getY()
+						&& issou.getPermeability() == Permeability.MONSTER) {
+					this.getModel().getLorann().isCrashed();
+					this.getModel().getLorann().die();
+				}
+
+			}
+		}
+	}
+
+	public final void moove2() throws InterruptedException, IOException {
+		while (this.getModel().getLorann().isAlive()) {
+			Thread.sleep(speed1);
+			switch (this.getStackOrder()) {
+			case RIGHT:
+
+				randomv2();
+				randomv3();
+
+				break;
+			case LEFT:
+
+				randomv2();
+				randomv3();
+
+				break;
+			case UP:
+
+				randomv2();
+				randomv3();
+
+				break;
+			case DOWN:
+
+				randomv2();
+				randomv3();
+
+				break;
+
+			case NOP:
+			default:
+
 				randomv2();
 				randomv3();
 				break;

@@ -227,11 +227,11 @@ public abstract class Mobile extends Element implements IMobile {
 			if (this.getMap().getOnTheMapXY(this.getX() + 1, this.getY())
 					.getPermeability() == Permeability.PENETRABLE) {
 				this.setX(this.getX() + 1);
-				
+
 				this.setHasMoved();
 
 			} else if (Model.getLorann().getPosition().equals(new Point(this.getX() + 1, this.getY()))) {
-				System.out.println("slt");
+
 				die();
 			}
 		}
