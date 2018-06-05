@@ -36,4 +36,10 @@ public class Pauline extends Mobile implements IPawn {
 
 	}
 
+	@Override
+	public void fireball() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -127,4 +127,10 @@ public class Lorann extends Mobile {
 
 	}
 
+	@Override
+	public void fireball() throws IOException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

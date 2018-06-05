@@ -42,6 +42,11 @@ public interface IMobile extends IPawn, IElement {
 	 */
 	void doNothing();
 
+	/**
+	 * MoveUp
+	 * 
+	 * @throws IOException
+	 */
 	void moveUpM() throws IOException;
 
 	/**
@@ -75,16 +80,14 @@ public interface IMobile extends IPawn, IElement {
 	@Override
 	int getY();
 
-	int getPX();
-
-	int getPY();
-
 	@Override
 	default Point getPosition() {
 		// TODO Auto-generated method stub
 		return new Point(getX(), getY());
 	}
-
+	/**
+	 * Method Die
+	 */
 	void die();
 
 	/**
@@ -100,5 +103,12 @@ public interface IMobile extends IPawn, IElement {
 	 * @return the boolean
 	 */
 	Boolean isCrashed();
+	
+	/**
+	 * Method Fireball
+	 * @throws IOException
+	 */
+	
+	void fireball() throws IOException;
 
 }

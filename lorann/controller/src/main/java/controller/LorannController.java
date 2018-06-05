@@ -108,18 +108,22 @@ public class LorannController implements ILorannController, IOrderPerformer {
 			switch (this.getStackOrder()) {
 			case RIGHT:
 				this.getModel().getLorann().moveRight();
+				getModel().getMonster().get(0).moveRightM();
 
 				break;
 			case LEFT:
 				this.getModel().getLorann().moveLeft();
+				getModel().getMonster().get(0).moveLeftM();
 
 				break;
 			case UP:
 				this.getModel().getLorann().moveUp();
+				getModel().getMonster().get(0).moveUpM();
 
 				break;
 			case DOWN:
 				this.getModel().getLorann().moveDown();
+				getModel().getMonster().get(0).moveDownM();
 
 				break;
 
@@ -146,7 +150,6 @@ public class LorannController implements ILorannController, IOrderPerformer {
 						switch (getStackOrder()) {
 						case RIGHT:
 
-							getModel().getMonster().get(0).moveRightM();
 							random();
 							randomv2();
 							follow();
@@ -154,7 +157,6 @@ public class LorannController implements ILorannController, IOrderPerformer {
 							break;
 						case LEFT:
 
-							getModel().getMonster().get(0).moveLeftM();
 							random();
 							randomv2();
 							follow();
@@ -162,7 +164,6 @@ public class LorannController implements ILorannController, IOrderPerformer {
 							break;
 						case UP:
 
-							getModel().getMonster().get(0).moveUpM();
 							random();
 							randomv2();
 							follow();
@@ -170,7 +171,6 @@ public class LorannController implements ILorannController, IOrderPerformer {
 							break;
 						case DOWN:
 
-							getModel().getMonster().get(0).moveDownM();
 							random();
 							randomv2();
 							follow();

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * <h1>The Interface IModel.</h1>
  *
- * @author groupe 1
+ * @author group 1
  * @version 1.0
  */
 public interface IModel {

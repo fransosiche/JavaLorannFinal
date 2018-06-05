@@ -8,6 +8,7 @@ import mobile.Lorann;
 import mobile.Masked;
 import mobile.Pauline;
 import mobile.Zombie;
+import mobile.Fireball;
 import mobile.Golem;
 
 public class ModelFacade implements IModel {
@@ -17,6 +18,8 @@ public class ModelFacade implements IModel {
 	private IMobile lorann;
 
 	private ArrayList<IMobile> monster = new ArrayList<IMobile>();
+	
+	private IMobile fireball;
 
 	public ModelFacade(final int level, final int lorannX, final int lorannY) throws IOException, SQLException {
 		this.setMap(new Map(level));
@@ -25,6 +28,7 @@ public class ModelFacade implements IModel {
 		this.getMonster().add(new Masked(2, 6, map,Permeability.MONSTER,this));
 		this.getMonster().add(new Pauline(16, 7, map,Permeability.MONSTER ,this));
 		this.getMonster().add(new Zombie(6, 10, map,Permeability.MONSTER,this));
+		this.getMonster().add(new Fireball(lorannX, lorannY, map, this));
 	}
 
 	@Override
@@ -57,4 +61,12 @@ public class ModelFacade implements IModel {
 		this.monster = monster;
 	}
 
+
+	public void setFireball(IMobile fireball) {
+		this.fireball = fireball;
+	}
+	
+	public IMobile getFireball() {
+		return fireball;
+	}
 }

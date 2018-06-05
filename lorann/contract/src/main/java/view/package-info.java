@@ -1,7 +1,7 @@
 /**
  * Provides all contracts for the view component.
  *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
+ * @author group 1
  * @version 1.0
  */
 package view;
