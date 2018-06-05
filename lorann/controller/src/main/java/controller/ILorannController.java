@@ -18,6 +18,11 @@ public interface ILorannController {
 	 * @throws IOException
 	 */
 	void moove() throws InterruptedException, IOException;
+	/**
+	 * Moove for AI
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	
 	void mooveAI() throws InterruptedException, IOException;
 

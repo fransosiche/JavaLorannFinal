@@ -35,8 +35,13 @@ public abstract class Mobile extends Element implements IMobile {
 	/** The board. */
 	private IBoard board;
 
+	/**
+	 * The constant Model
+	 */
 	private ModelFacade Model;
-
+	/**
+	 * the constant score
+	 */
 	private int score = 0;
 
 	/**
@@ -110,10 +115,6 @@ public abstract class Mobile extends Element implements IMobile {
 
 		}
 	}
-
-
-
-	
 
 	/**
 	 * Method to moove left
@@ -202,6 +203,9 @@ public abstract class Mobile extends Element implements IMobile {
 		}
 	}
 
+	/**
+	 * Move right for monster
+	 */
 	public void moveRightM() throws IOException {
 
 		if (this.getX() != this.getMap().getWidth()) {
@@ -216,6 +220,9 @@ public abstract class Mobile extends Element implements IMobile {
 
 	}
 
+	/**
+	 * Move down for monster
+	 */
 	public void moveDownM() throws IOException {
 
 		if (this.getY() != this.getMap().getHeight()) {
@@ -229,6 +236,9 @@ public abstract class Mobile extends Element implements IMobile {
 
 	}
 
+	/**
+	 * Move left for monster
+	 */
 	public void moveLeftM() throws IOException {
 
 		if (this.getX() != 0) {
@@ -240,7 +250,9 @@ public abstract class Mobile extends Element implements IMobile {
 			}
 		}
 	}
-
+	/**
+	 * Move up for monster
+	 */
 	public void moveUpM() throws IOException {
 
 		if (this.getY() != 0) {
@@ -302,13 +314,19 @@ public abstract class Mobile extends Element implements IMobile {
 	public final int getX() {
 		return this.getPosition().x;
 	}
-
+	/**
+	 * get the PX
+	 * @returnPX
+	 */
 	public final int getPX() {
 
 		return this.getPX();
 
 	}
-
+	/**
+	 * get the PY
+	 * @returnPY
+	 */
 	public final int getPY() {
 
 		return this.getPY();
@@ -475,11 +493,17 @@ public abstract class Mobile extends Element implements IMobile {
 	protected IBoard getBoard() {
 		return this.board;
 	}
-
+	/**
+	 * get the model of lorann
+	 * @return model
+	 */
 	public ModelFacade getModel() {
 		return Model;
 	}
-
+	/**
+	 * set the model of lorann
+	 * @param model
+	 */
 	public void setModel(ModelFacade model) {
 		Model = model;
 	}

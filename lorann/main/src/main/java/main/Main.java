@@ -24,7 +24,7 @@ public abstract class Main {
 	private static int startY = 0;
 
 	/**
-	 * The main method.
+	 * The method main
 	 *
 	 * @param args
 	 *            the arguments
@@ -105,7 +105,7 @@ public abstract class Main {
 	}
 
 	/**
-	 * 
+	 * Check the number
 	 * @param string
 	 * @return
 	 */

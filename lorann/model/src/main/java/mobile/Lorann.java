@@ -39,7 +39,9 @@ public class Lorann extends Mobile {
 
 	/** The Constant spriteTurnDown. */
 	private static final Sprite spriteTurnDown = new Sprite('c', "lorann_b.png");
-
+	/**
+	 * the Constant for the icon of lorann
+	 */
 	public int Picture;
 
 	/**
@@ -130,7 +132,7 @@ public class Lorann extends Mobile {
 	@Override
 	public void fireball() throws IOException {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

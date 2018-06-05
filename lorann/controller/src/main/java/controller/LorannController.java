@@ -12,12 +12,17 @@ import view.ILorannView;
  * <h1>The Class ControllerFacade provides a facade of the Controller
  * component.</h1>
  *
- * @author Groupe 1
+ * @author Group 1
  * @version 1.0
  */
 public class LorannController implements ILorannController, IOrderPerformer {
-
+	/**
+	 * the speed for bots
+	 */
 	private static final int speed = 50;
+	/**
+	 * the speed for thread of lorann
+	 */
 
 	private static final int speed1 = 400;
 
@@ -46,7 +51,7 @@ public class LorannController implements ILorannController, IOrderPerformer {
 	}
 
 	/**
-	 * 
+	 * Random method
 	 * @param H
 	 * @return
 	 * @throws IOException
@@ -63,7 +68,10 @@ public class LorannController implements ILorannController, IOrderPerformer {
 			this.getModel().getMonster().get(1).moveRightM();
 		}
 	}
-
+	/**
+	 * Second random AI
+	 * @throws IOException
+	 */
 	public void randomv2() throws IOException {
 		int W = (int) (Math.random() * (4 - 0));
 		if (W == 0) {
@@ -76,7 +84,10 @@ public class LorannController implements ILorannController, IOrderPerformer {
 			this.getModel().getMonster().get(2).moveRightM();
 		}
 	}
-
+	/*
+	 * The Ai that going to follow you/chase you
+	 * 
+	 */
 	public void follow() throws IOException {
 		if (this.getModel().getLorann().getX() != this.getModel().getMonster().get(3).getX()
 				&& this.getModel().getLorann().getY() != this.getModel().getMonster().get(3).getY()) {
@@ -96,10 +107,8 @@ public class LorannController implements ILorannController, IOrderPerformer {
 
 		}
 	}
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see controller.ILorannController#moove()
+	/**
+	 * the moove method
 	 */
 
 	public final void moove() throws InterruptedException, IOException {
@@ -136,8 +145,10 @@ public class LorannController implements ILorannController, IOrderPerformer {
 			this.clearStackOrder();
 
 		}
-	}
-
+	}	
+	/**
+	 * Moove for AI
+	 */
 	public final void mooveAI() throws InterruptedException, IOException {
 		Thread t = new Thread(new Runnable() {
 
