@@ -5,6 +5,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 import controller.LorannController;
 import model.ModelFacade;
 import view.ViewFacade;
@@ -97,8 +101,8 @@ public abstract class Main {
 
 		} else if (level == 5) {
 
-			startX = 1;
-			startY = 6;
+			startX = 5;
+			startY = 5;
 
 		}
 
@@ -106,6 +110,7 @@ public abstract class Main {
 
 	/**
 	 * Check the number
+	 * 
 	 * @param string
 	 * @return
 	 */
@@ -142,7 +147,7 @@ public abstract class Main {
 	 * @throws InterruptedException:
 	 */
 	public static void Start(int level) throws IOException, SQLException, InterruptedException {
-		System.out.println("Game start!");
+		System.out.println("Let's GO !");
 		final ModelFacade model = new ModelFacade(level, startX, startY);
 		final ViewFacade view = new ViewFacade(model.getMap(), model.getLorann(), model.getMonster());
 		final LorannController controller = new LorannController(view, model);

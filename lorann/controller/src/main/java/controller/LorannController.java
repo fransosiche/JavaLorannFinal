@@ -23,8 +23,7 @@ public class LorannController implements ILorannController, IOrderPerformer {
 	/**
 	 * the speed for thread of lorann
 	 */
-
-	private static final int speed1 = 400;
+	private static final int speed1 = 600;
 
 	/** The view. */
 	private ILorannView view;
@@ -52,6 +51,7 @@ public class LorannController implements ILorannController, IOrderPerformer {
 
 	/**
 	 * Random method
+	 * 
 	 * @param H
 	 * @return
 	 * @throws IOException
@@ -68,29 +68,14 @@ public class LorannController implements ILorannController, IOrderPerformer {
 			this.getModel().getMonster().get(1).moveRightM();
 		}
 	}
-	/**
-	 * Second random AI
-	 * @throws IOException
-	 */
-	public void randomv2() throws IOException {
-		int W = (int) (Math.random() * (4 - 0));
-		if (W == 0) {
-			this.getModel().getMonster().get(2).moveDownM();
-		} else if (W == 1) {
-			this.getModel().getMonster().get(2).moveUpM();
-		} else if (W == 2) {
-			this.getModel().getMonster().get(2).moveLeftM();
-		} else if (W == 3) {
-			this.getModel().getMonster().get(2).moveRightM();
-		}
-	}
+
 	/*
 	 * The Ai that going to follow you/chase you
 	 * 
 	 */
 	public void follow() throws IOException {
 		if (this.getModel().getLorann().getX() != this.getModel().getMonster().get(3).getX()
-				&& this.getModel().getLorann().getY() != this.getModel().getMonster().get(3).getY()) {
+				|| this.getModel().getLorann().getY() != this.getModel().getMonster().get(3).getY()) {
 
 			if (this.getModel().getLorann().getX() > this.getModel().getMonster().get(3).getX()) {
 				this.getModel().getMonster().get(3).moveRightM();
@@ -107,6 +92,32 @@ public class LorannController implements ILorannController, IOrderPerformer {
 
 		}
 	}
+
+	/**
+	 * Follow by line
+	 * 
+	 * @throws IOException
+	 */
+	public void followbyline() throws IOException {
+		if (this.getModel().getLorann().getX() != this.getModel().getMonster().get(2).getX()
+				&& this.getModel().getLorann().getY() != this.getModel().getMonster().get(2).getY()) {
+
+			if (this.getModel().getLorann().getX() > this.getModel().getMonster().get(2).getX()) {
+				this.getModel().getMonster().get(2).moveRightM();
+			} else if (this.getModel().getLorann().getX() < this.getModel().getMonster().get(2).getX()) {
+				this.getModel().getMonster().get(2).moveLeftM();
+			}
+
+			if (this.getModel().getLorann().getY() > this.getModel().getMonster().get(2).getY()) {
+				this.getModel().getMonster().get(2).moveDownM();
+
+			} else if (this.getModel().getLorann().getY() < this.getModel().getMonster().get(2).getY()) {
+				this.getModel().getMonster().get(2).moveUpM();
+			}
+
+		}
+	}
+
 	/**
 	 * the moove method
 	 */
@@ -145,7 +156,8 @@ public class LorannController implements ILorannController, IOrderPerformer {
 			this.clearStackOrder();
 
 		}
-	}	
+	}
+
 	/**
 	 * Moove for AI
 	 */
@@ -162,28 +174,28 @@ public class LorannController implements ILorannController, IOrderPerformer {
 						case RIGHT:
 
 							random();
-							randomv2();
+							followbyline();
 							follow();
 
 							break;
 						case LEFT:
 
 							random();
-							randomv2();
+							followbyline();
 							follow();
 
 							break;
 						case UP:
 
 							random();
-							randomv2();
+							followbyline();
 							follow();
 
 							break;
 						case DOWN:
 
 							random();
-							randomv2();
+							followbyline();
 							follow();
 
 							break;
@@ -192,7 +204,7 @@ public class LorannController implements ILorannController, IOrderPerformer {
 						default:
 
 							random();
-							randomv2();
+							followbyline();
 							follow();
 
 							break;
